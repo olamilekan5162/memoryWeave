@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Dashboard from "./pages/Dashboard";
+import Main from "./components/Main";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       {/* <div className="flex flex-col items-center border-4 border-red-500 h-[100vh]"> */}
       <Header />
       <Hero />
-      <Dashboard />
+      <Main />
     </>
   );
 }

@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <nav className="w-full h-[120px] flex flex-row items-center justify-around shadow-sm fixed top-0 left-0 backdrop-blur-md">
+    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-2 border-gray-300 fixed top-0 left-0 backdrop-blur-md">
       <h1 className="text-3xl font-bold text-primary">
         SUMMER
         <span className="text-secondary block">VIBE WEAVER</span>
       </h1>
 
-      <div className="hidden sm:flex flex-row gap-1 items-center border-3 border-primary w-[40%] py-2 px-5 rounded">
+      <div className="hidden sm:flex flex-row gap-1 items-center border-1 border-gray-300 w-[40%] py-2 px-5 rounded">
         <input
           placeholder="Search for memories by tag, title, date ..."
           className="border-0 outline-0 w-full text-text"
@@ -24,7 +24,7 @@ const Header = () => {
       <div className="hidden  sm:block">
         <Button
           text={"+ Create New Vibe"}
-          onclick={() => navigate("upload")}
+          onclick={() => navigate("/upload")}
         ></Button>
       </div>
 

@@ -14,6 +14,10 @@ const router = createBrowserRouter([
     path: "upload",
     element: <AddCapsule />,
   },
+  {
+    path: "/:id",
+    element: <AddCapsule />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import CapsuleCard from "../cards/Capsulecard";
 import { sample } from "../sample/sample";
-const Dashboard = () => {
+const Main = () => {
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-col gap-5 px-4 md:px-[250px] text-text">
+    <main className="flex flex-col gap-5 px-4 md:px-[250px] text-text">
       <h1 className="font-bold text-2xl">Memory Capsule</h1>
       <div className="flex flex-row gap-2 flex-wrap">
         <div className="flex flex-row items-center">
@@ -34,11 +36,12 @@ const Dashboard = () => {
             date={capsule.date}
             media={capsule.media}
             location={capsule.location}
+            onclick={() => navigate(`/${capsule.id}`)}
           />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 
-export default Dashboard;
+export default Main;
