@@ -1,9 +1,11 @@
 import { CiSearch } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa6";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const navigate = useNavigate();
   return (
-    <nav className="w-full h-[120px] flex flex-row items-center justify-around shadow-sm shadow-secondary fixed top-0 left-0">
+    <nav className="w-full h-[120px] flex flex-row items-center justify-around shadow-sm fixed top-0 left-0 backdrop-blur-md">
       <h1 className="text-3xl font-bold text-primary">
         SUMMER
         <span className="text-secondary block">VIBE WEAVER</span>
@@ -20,10 +22,16 @@ const Header = () => {
       <CiSearch className="text-3xl sm:hidden" />
 
       <div className="hidden  sm:block">
-        <Button text={"+ Create New Vibe"}></Button>
+        <Button
+          text={"+ Create New Vibe"}
+          onclick={() => navigate("upload")}
+        ></Button>
       </div>
 
-      <div className="rounded-full bg-primary p-1 sm:hidden">
+      <div
+        className="rounded-full bg-primary p-1 sm:hidden"
+        onClick={() => navigate("upload")}
+      >
         <FaPlus className="text-2xl text-white " />
       </div>
     </nav>
