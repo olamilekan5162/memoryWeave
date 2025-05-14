@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddCapsule from "./pages/AddCapsule.jsx";
+import Playback from "./pages/Playback.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/:id",
-    element: <AddCapsule />,
+    element: <Playback />,
   },
 ]);
 
