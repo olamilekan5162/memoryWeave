@@ -11,8 +11,9 @@ const Dashboard = () => {
             <option value="all" selected>
               All Memories
             </option>
-            <option value="happy">Happy</option>
-            <option value="sad">Sad</option>
+            <option value="happy">Beach</option>
+            <option value="sad">Birthday</option>
+            <option value="sad">hangout</option>
           </select>
         </div>
         <div className="flex flex-row items-center">
@@ -25,25 +26,16 @@ const Dashboard = () => {
           </select>
         </div>
       </div>
-      <div className="flex flex-row gap-6 md:gap-12 px-[50px] md:px-3 flex-wrap">
+      <div className="flex flex-row gap-6 md:gap-12 px-[50px] md:px-3 flex-wrap justify-center md:justify-start">
         {sample.map((capsule) => (
           <CapsuleCard
             key={capsule.id}
             title={capsule.title}
             date={capsule.date}
-            imageUrl={capsule.imageUrl}
+            media={capsule.media}
+            location={capsule.location}
           />
         ))}
-        {/* <CapsuleCard
-          title={"Moms Birthday"}
-          date={"01/04/2025"}
-          imageUrl={lekan}
-        />
-        <CapsuleCard
-          title={"Summer Holiday"}
-          date={"03/06/2027"}
-          imageUrl={sade}
-        /> */}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Header = () => {
 
       <div className="hidden sm:flex flex-row gap-1 items-center border-3 border-primary w-[40%] py-2 px-5 rounded">
         <input
-          placeholder="Search for Ambience"
+          placeholder="Search for memories by tag, title, date ..."
           className="border-0 outline-0 w-full text-text"
         />
         <CiSearch className="text-3xl cursor-pointer" />
