@@ -1,8 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import CapsuleCard from "../cards/Capsulecard";
-import { sample } from "../sample/sample";
+import { userVibe } from "../sample/sample";
+import { getAllVibes } from "../utils/indexedDB.js";
+import { useEffect, useState } from "react";
 const Main = () => {
   const navigate = useNavigate();
+  const [vibes, setVibes] = useState(null);
+
+  useEffect(() => {
+    const getVibes = async () => {
+      const vibe = await getAllVibes();
+      setVibes(vibe);
+    };
+    getVibes();
+  }, []);
   return (
     <main className="flex flex-col gap-5 px-4 md:px-[250px] text-text">
       <h1 className="font-bold text-2xl">Memory Capsule</h1>
@@ -29,7 +40,18 @@ const Main = () => {
         </div>
       </div>
       <div className="flex flex-row gap-6 md:gap-12 px-[50px] md:px-3 flex-wrap justify-center md:justify-start">
-        {sample.map((capsule) => (
+        {vibes &&
+          vibes.map((vibe) => (
+            <CapsuleCard
+              key={vibe.id}
+              title={vibe.title}
+              date={vibe.date}
+              media={vibe.media}
+              location={vibe.location}
+              onclick={() => navigate(`/${vibe.id}`)}
+            />
+          ))}
+        {/* {userVibe.map((capsule) => (
           <CapsuleCard
             key={capsule.id}
             title={capsule.title}
@@ -38,7 +60,7 @@ const Main = () => {
             location={capsule.location}
             onclick={() => navigate(`/${capsule.id}`)}
           />
-        ))}
+        ))} */}
       </div>
     </main>
   );

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-2 border-gray-300 fixed top-0 left-0 backdrop-blur-md">
+    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md">
       <h1 className="text-3xl font-bold text-primary">
         SUMMER
         <span className="text-secondary block">VIBE WEAVER</span>
@@ -30,7 +30,7 @@ const Header = () => {
 
       <div
         className="rounded-full bg-primary p-1 sm:hidden"
-        onClick={() => navigate("upload")}
+        onClick={() => navigate("/upload")}
       >
         <FaPlus className="text-2xl text-white " />
       </div>

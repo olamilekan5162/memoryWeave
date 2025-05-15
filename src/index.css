@@ -2,7 +2,8 @@
 
 @theme {
   --font-nunito: Nunito, serif;
-  --color-primary: oklch(48.8% 0.243 264.376);
+  /* --color-primary: oklch(48.8% 0.243 264.376); */
+  --color-primary: oklch(0.46 0.2363 263.15);
   --color-secondary: oklch(64.6% 0.222 41.116);
   --color-text: oklch(0.21 0.0318 264.66);
 }

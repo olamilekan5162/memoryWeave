@@ -12,8 +12,8 @@ const CapsuleCard = ({ title, media, date, location, onclick }) => {
       <div className="relative flex-grow mt-2">
         {media.slice(0, 3).map((item, index) => (
           <img
-            key={index}
-            src={item.url}
+            key={item.id}
+            src={URL.createObjectURL(item.file)}
             alt=""
             className={`absolute w-[90%] h-[90%] object-cover rounded shadow-md transition-all duration-300`}
             style={{

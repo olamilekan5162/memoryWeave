@@ -3,7 +3,7 @@ import sade from "../assets/sade.png";
 import holy from "../assets/holy.png";
 import { v4 as uuidv4 } from "uuid";
 
-export const sample = [
+export const userVibe = [
   {
     id: uuidv4(),
     title: "Moms Birthday",
@@ -16,7 +16,8 @@ export const sample = [
     date: new Date("2024-01-10").toDateString(),
     location: "Osogbo",
     ambientSound: "path/to/waves.mp3",
-    note: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas placeat assumenda qui, dolorem voluptate adipisci aut iure in magnam facilis amet fuga quisquam.",
+    journal:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas placeat assumenda qui, dolorem voluptate adipisci aut iure in magnam facilis amet fuga quisquam.",
   },
   {
     id: uuidv4(),

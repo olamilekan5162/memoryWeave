@@ -2,16 +2,66 @@ import { useState } from "react";
 import Header from "../components/Header";
 import { BsCloudUpload } from "react-icons/bs";
 import Button from "../components/Button";
-// import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { saveVibe } from "../utils/indexedDB.js";
+import { useNavigate } from "react-router-dom";
 
 const AddCapsule = () => {
-  const [title, setTitle] = useState("");
-  // const navigate = useNavigate();
+  const [userVibe, setUserVibe] = useState({
+    id: uuidv4(),
+    title: "",
+    tags: [],
+    media: [],
+    date: "",
+    location: "",
+    ambientSound: "",
+    journal: "",
+  });
+  const navigate = useNavigate();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserVibe({
+      ...userVibe,
+      [name]: value,
+    });
+  };
+
+  const handleMediaChange = (e) => {
+    const files = Array.from(e.target.files);
+    const media = files.map((file) => ({
+      id: uuidv4(),
+      file: file,
+      name: file.name,
+      type: file.type,
+    }));
+    setUserVibe({ ...userVibe, media: [...userVibe.media, ...media] });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await saveVibe(userVibe);
+    setUserVibe({
+      id: uuidv4(),
+      title: "",
+      tags: [],
+      media: [],
+      date: "",
+      location: "",
+      ambientSound: "",
+      journal: "",
+    });
+    navigate("/");
+  };
+
   return (
     <>
       <Header />
       <div className="flex items-center justify-center h-full w-full mt-[150px]">
-        <form className="flex flex-col border-1 rounded-xl border-gray-300 w-[95%] md:w-[60%] p-8 gap-2">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col border-1 rounded-xl border-gray-300 w-[95%] md:w-[60%] p-8 gap-2"
+        >
           <h1 className="text-2xl font-bold text-center">
             CREATE NEW SUMMER VIBE
           </h1>
@@ -24,8 +74,8 @@ const AddCapsule = () => {
             name="title"
             id="title"
             placeholder="Enter the title for the memory"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={userVibe.title}
+            onChange={handleInputChange}
           />
           <div className="flex flex-row items-center gap-7 flex-wrap">
             <label for="location" className="text-xl">
@@ -36,8 +86,8 @@ const AddCapsule = () => {
                 name="location"
                 id="location"
                 placeholder="Location"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={userVibe.location}
+                onChange={handleInputChange}
               />
             </label>
             <label for="date" className="text-xl">
@@ -45,11 +95,10 @@ const AddCapsule = () => {
               <input
                 className="border-1 border-gray-300 p-2 w-full rounded outline-0"
                 type="date"
-                name="location"
-                id="location"
-                placeholder="Location"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                name="date"
+                id="date"
+                value={userVibe.date}
+                onChange={handleInputChange}
               />
             </label>
             <label for="Ambience" className="text-xl">
@@ -70,9 +119,17 @@ const AddCapsule = () => {
             type="text"
             name="tags"
             id="tags"
-            placeholder="Enter memory tags separated with a space"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter memory tags separated with a comma"
+            value={userVibe?.tags?.join(", ")}
+            onChange={(e) => {
+              setUserVibe({
+                ...userVibe,
+                tags: e.target.value
+                  .split(",")
+                  .map((tag) => tag.trim())
+                  .filter((tag) => tag !== ""),
+              });
+            }}
           />
           <label for="jornal" className="text-xl">
             Memories Jornal:
@@ -83,8 +140,8 @@ const AddCapsule = () => {
             name="journal"
             id="journal"
             placeholder="Write your story ..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={userVibe.jornal}
+            onChange={handleInputChange}
           />
           <label
             htmlFor="media"
@@ -98,9 +155,17 @@ const AddCapsule = () => {
               <h1 className="text-lg font-bold">Summer Memories</h1>
               <p>Select and upload multiple images of your memory</p>
             </div>
-            <input className="hidden" type="file" name="media" id="media" />
+            <input
+              className="hidden"
+              type="file"
+              name="media"
+              id="media"
+              multiple
+              accept="image/*, video/*"
+              onChange={handleMediaChange}
+            />
           </label>
-          <Button text={"Upload"} />
+          <Button text={"Save Vibe"} />
         </form>
       </div>
     </>
