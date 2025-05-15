@@ -29,7 +29,7 @@ const Header = () => {
       </div>
 
       <div
-        className="rounded-full bg-primary p-1 sm:hidden"
+        className="rounded-full bg-primary hover:opacity-80 p-1 sm:hidden"
         onClick={() => navigate("/upload")}
       >
         <FaPlus className="text-2xl text-white " />

@@ -4,10 +4,10 @@ const Button = ({ text, variant = "primary", onclick }) => {
       className={`
         ${
           variant === "primary"
-            ? "bg-primary hover:bg-primary-hover"
-            : "border border-primary hover:bg-primary-hover text-text"
+            ? "bg-primary hover:opacity-80 text-white"
+            : "border border-primary hover:bg-primary hover:text-white text-text"
         }
-        rounded-sm px-4 py-2 text-white text-xl`}
+        rounded-sm px-4 py-2 text-xl`}
       onClick={onclick}
     >
       {text}

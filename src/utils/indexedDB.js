@@ -56,6 +56,24 @@ export async function getAllVibes() {
   });
 }
 
+export async function getVibeById(id) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, "readonly");
+    const store = tx.objectStore(STORE_NAME);
+    const request = store.get(id);
+
+    request.onsuccess = () => {
+      db.close();
+      resolve(request.result);
+    };
+    request.onerror = () => {
+      db.close();
+      reject("Failed to get vibe");
+    };
+  });
+}
+
 export async function deleteVibe(id) {
   const db = await openDB();
   return new Promise((resolve, reject) => {

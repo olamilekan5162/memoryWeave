@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import CapsuleCard from "../cards/Capsulecard";
-import { userVibe } from "../sample/sample";
 import { getAllVibes } from "../utils/indexedDB.js";
 import { useEffect, useState } from "react";
 const Main = () => {
@@ -11,6 +10,7 @@ const Main = () => {
     const getVibes = async () => {
       const vibe = await getAllVibes();
       setVibes(vibe);
+      console.log(vibe);
     };
     getVibes();
   }, []);
@@ -51,16 +51,6 @@ const Main = () => {
               onclick={() => navigate(`/${vibe.id}`)}
             />
           ))}
-        {/* {userVibe.map((capsule) => (
-          <CapsuleCard
-            key={capsule.id}
-            title={capsule.title}
-            date={capsule.date}
-            media={capsule.media}
-            location={capsule.location}
-            onclick={() => navigate(`/${capsule.id}`)}
-          />
-        ))} */}
       </div>
     </main>
   );

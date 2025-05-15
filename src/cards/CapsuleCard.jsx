@@ -11,19 +11,32 @@ const CapsuleCard = ({ title, media, date, location, onclick }) => {
       </div>
       <div className="relative flex-grow mt-2">
         {media.slice(0, 3).map((item, index) => (
-          <img
+          <div
             key={item.id}
-            src={URL.createObjectURL(item.file)}
-            alt=""
-            className={`absolute w-[90%] h-[90%] object-cover rounded shadow-md transition-all duration-300`}
+            className={`absolute w-[90%] h-[90%] rounded shadow-md transition-all duration-300`}
             style={{
               top: `${index * 6}px`,
               left: `${index * 6}px`,
               zIndex: 10 - index,
             }}
-          />
+          >
+            {item.type.startsWith("image/") ? (
+              <img
+                src={URL.createObjectURL(item.file)}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <video
+                src={URL.createObjectURL(item.file)}
+                controls
+                className="w-full h-full object-cover"
+              />
+            )}
+          </div>
         ))}
       </div>
+
       <div className="flex flex-row items-center justify-between text-xs mt-auto pt-2">
         <p>{date}</p>
         <p>{location}</p>

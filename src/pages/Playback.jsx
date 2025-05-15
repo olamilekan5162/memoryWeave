@@ -1,8 +1,48 @@
 import Header from "../components/Header";
 import Lekan from "../assets/lekan.jpg";
-import Sade from "../assets/sade.png";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getVibeById } from "../utils/indexedDB";
 
 const Playback = () => {
+  const [vibe, setVibe] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentMediaUrl, setCurrentMediaUrl] = useState("");
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getVibe = async () => {
+      const vibe = await getVibeById(id);
+      setVibe(vibe);
+      console.log(vibe);
+    };
+    getVibe();
+  }, [id]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % vibe?.media?.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [vibe]);
+
+  useEffect(() => {
+    let objectUrl;
+
+    if (vibe?.media?.[currentIndex]?.file instanceof Blob) {
+      objectUrl = URL.createObjectURL(vibe.media[currentIndex].file);
+      setCurrentMediaUrl(objectUrl);
+    }
+
+    return () => {
+      if (objectUrl) {
+        URL.revokeObjectURL(objectUrl);
+      }
+    };
+  }, [vibe, currentIndex]);
+
   return (
     <>
       <Header />
@@ -11,25 +51,63 @@ const Playback = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg"
             style={{
-              backgroundImage: `url(${Lekan})`,
+              backgroundImage:
+                vibe?.media?.[currentIndex]?.file instanceof Blob
+                  ? `url(${currentMediaUrl})`
+                  : "none",
               backgroundSize: "cover",
             }}
           />
           <div className="relative z-10 h-full flex items-center justify-center">
-            <img
-              src={Lekan}
-              alt=""
-              className="max-h-full max-w-full object-contain"
-            />
+            {vibe?.media?.[currentIndex]?.file instanceof Blob ? (
+              vibe.media[currentIndex].type.startsWith("image/") ? (
+                <img
+                  src={currentMediaUrl}
+                  alt=""
+                  className="max-h-full max-w-full object-contain"
+                />
+              ) : (
+                <video
+                  src={currentMediaUrl}
+                  controls
+                  onEnded={() =>
+                    setCurrentIndex(
+                      (prevIndex) => (prevIndex + 1) % vibe.media.length
+                    )
+                  }
+                  className="max-h-full max-w-full object-contain"
+                />
+              )
+            ) : null}
           </div>
         </div>
-        <div className="flex flex-row items-center gap-2 flex-wrap">
-          <div className="h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] border-2 border-gray-300 rounded">
-            <img src={Lekan} alt="" className="w-[100%] h-auto" />
-          </div>
-          <div className="h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] border-2 border-gray-300 rounded">
-            <img src={Sade} alt="" className="w-[100%] h-auto" />
-          </div>
+        <div className="flex flex-row items-center gap-3 flex-wrap">
+          {vibe?.media.map((item, index) => (
+            <div
+              key={item.id}
+              className={`h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] border-1 border-gray-300 rounded overflow-hidden ${
+                currentIndex === index ? "scale-106" : ""
+              }`}
+              onClick={() => setCurrentIndex(index)}
+            >
+              {item.file instanceof Blob && item.type.startsWith("image/") ? (
+                <img
+                  src={URL.createObjectURL(item.file)}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              ) : item.file instanceof Blob &&
+                item.type.startsWith("video/") ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  src={URL.createObjectURL(item.file)}
+                  className="w-full h-full object-cover"
+                />
+              ) : null}
+            </div>
+          ))}
         </div>
       </div>
     </>
