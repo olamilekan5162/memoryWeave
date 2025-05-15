@@ -5,6 +5,10 @@ import Button from "../components/Button";
 import { v4 as uuidv4 } from "uuid";
 import { saveVibe } from "../utils/indexedDB.js";
 import { useNavigate } from "react-router-dom";
+import spring from "../assets/sounds/ambient-spring-forest.mp3";
+import flute from "../assets/sounds/flute-rain.mp3";
+import birthday from "../assets/sounds/happy-birthday.mp3";
+import beach from "../assets/sounds/soft-beach-wave.mp3";
 
 const AddCapsule = () => {
   const [userVibe, setUserVibe] = useState({
@@ -104,10 +108,10 @@ const AddCapsule = () => {
             <label for="Ambience" className="text-xl">
               Ambience:
               <select className="px-2 py-1 border-0 outline-0">
-                <option value="all">Beach Wave</option>
-                <option value="happy">Happy mole</option>
-                <option value="sad">Birthday song</option>
-                <option value="sad">Wild</option>
+                <option value={spring}>Spring Forest</option>
+                <option value={flute}>Flute Rain</option>
+                <option value={beach}>Beach Wave</option>
+                <option value={birthday}>Happy Birthday</option>
               </select>
             </label>
           </div>

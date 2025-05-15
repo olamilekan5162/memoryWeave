@@ -21,12 +21,17 @@ const Playback = () => {
   }, [id]);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % vibe?.media?.length);
-    }, 5000);
+    const currentMedia = vibe?.media?.[currentIndex];
+    if (!currentMedia) return;
 
-    return () => clearInterval(intervalId);
-  }, [vibe]);
+    if (currentMedia.type.startsWith("image/")) {
+      const timer = setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % vibe.media.length);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [vibe, currentIndex]);
 
   useEffect(() => {
     let objectUrl;
@@ -85,7 +90,7 @@ const Playback = () => {
           {vibe?.media.map((item, index) => (
             <div
               key={item.id}
-              className={`h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] border-1 border-gray-300 rounded overflow-hidden ${
+              className={`h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] hover:scale-106 border-1 border-gray-300 rounded overflow-hidden ${
                 currentIndex === index ? "scale-106" : ""
               }`}
               onClick={() => setCurrentIndex(index)}
