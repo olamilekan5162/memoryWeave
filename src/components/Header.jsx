@@ -7,8 +7,8 @@ const Header = () => {
   return (
     <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md">
       <h1 className="text-3xl font-bold text-primary">
-        SUMMER
-        <span className="text-secondary block">VIBE WEAVER</span>
+        MEMORY
+        <span className="text-secondary block">WEAVE</span>
       </h1>
 
       <div className="hidden sm:flex flex-row gap-1 items-center border-1 border-gray-300 w-[40%] py-2 px-5 rounded">

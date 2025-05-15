@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import CapsuleCard from "../cards/Capsulecard";
 import { getAllVibes } from "../utils/indexedDB.js";
 import { useEffect, useState } from "react";
+import { CiImport } from "react-icons/ci";
 const Main = () => {
   const navigate = useNavigate();
   const [vibes, setVibes] = useState(null);
@@ -14,9 +15,22 @@ const Main = () => {
     };
     getVibes();
   }, []);
+
+  const handleImport = () => {
+    alert("imported");
+  };
   return (
     <main className="flex flex-col gap-5 px-4 md:px-[250px] text-text">
-      <h1 className="font-bold text-2xl">Memory Capsule</h1>
+      <div className="flex flex-row items-center justify-between text-text">
+        <h1 className="font-bold text-2xl">Memory Capsule</h1>
+        <div
+          className="flex flex-row items-center hover:text-primary cursor-pointer"
+          onClick={handleImport}
+        >
+          <CiImport />
+          <p className="hidden sm:block">Import Memory</p>
+        </div>
+      </div>
       <div className="flex flex-row gap-2 flex-wrap">
         <div className="flex flex-row items-center">
           <p>Filter by Tags:</p>

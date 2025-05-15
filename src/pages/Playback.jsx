@@ -1,15 +1,19 @@
 import Header from "../components/Header";
-import Lekan from "../assets/lekan.jpg";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { getVibeById } from "../utils/indexedDB";
+import { deleteVibe } from "../utils/indexedDB";
+import { MdDeleteOutline } from "react-icons/md";
+import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 
 const Playback = () => {
   const [vibe, setVibe] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentMediaUrl, setCurrentMediaUrl] = useState("");
-
+  const audioRef = useRef(null);
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const getVibe = async () => {
@@ -23,6 +27,12 @@ const Playback = () => {
   useEffect(() => {
     const currentMedia = vibe?.media?.[currentIndex];
     if (!currentMedia) return;
+
+    if (audioRef.current) {
+      audioRef.current.volume = currentMedia.type.startsWith("video/")
+        ? 0.1
+        : 1;
+    }
 
     if (currentMedia.type.startsWith("image/")) {
       const timer = setTimeout(() => {
@@ -48,10 +58,20 @@ const Playback = () => {
     };
   }, [vibe, currentIndex]);
 
+  const handleDelete = () => {
+    deleteVibe(id);
+    alert("File deleted");
+    setIsModalOpen(false);
+    navigate("/");
+  };
+
   return (
     <>
       <Header />
       <div className="flex flex-col items-center justify-center h-full w-full gap-10 py-10 mt-[150px]">
+        <div className="flex flex-row" onClick={() => setIsModalOpen(true)}>
+          <MdDeleteOutline />
+        </div>
         <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[60%] p-8 relative">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg"
@@ -114,7 +134,19 @@ const Playback = () => {
             </div>
           ))}
         </div>
+        <DeleteConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          isOpen={isModalOpen}
+          onDelete={handleDelete}
+        />
       </div>
+      <audio
+        ref={audioRef}
+        src={vibe?.ambientSound}
+        autoPlay
+        loop
+        className="hidden"
+      ></audio>
     </>
   );
 };

@@ -105,9 +105,16 @@ const AddCapsule = () => {
                 onChange={handleInputChange}
               />
             </label>
-            <label for="Ambience" className="text-xl">
+            <label for="ambientSound" className="text-xl">
               Ambience:
-              <select className="px-2 py-1 border-0 outline-0">
+              <select
+                name="ambientSound"
+                id="ambientSound"
+                className="px-2 py-1 border-0 outline-0"
+                onChange={handleInputChange}
+                value={userVibe.ambientSound}
+              >
+                <option value="">-- Select Sound --</option>
                 <option value={spring}>Spring Forest</option>
                 <option value={flute}>Flute Rain</option>
                 <option value={beach}>Beach Wave</option>
