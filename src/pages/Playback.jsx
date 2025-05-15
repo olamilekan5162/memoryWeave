@@ -5,6 +5,7 @@ import { getVibeById } from "../utils/indexedDB";
 import { deleteVibe } from "../utils/indexedDB";
 import { MdDeleteOutline } from "react-icons/md";
 import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
+import { CiExport } from "react-icons/ci";
 
 const Playback = () => {
   const [vibe, setVibe] = useState(null);
@@ -68,9 +69,19 @@ const Playback = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center h-full w-full gap-10 py-10 mt-[150px]">
-        <div className="flex flex-row" onClick={() => setIsModalOpen(true)}>
-          <MdDeleteOutline />
+      <div className="flex flex-col items-center justify-center h-full w-full gap-5 py-10 mt-[120px]">
+        <div className="flex flex-row gap-5 items-center self-end pr-10">
+          <div
+            className="flex flex-row gap-1 hover:text-primary cursor-pointer"
+            onClick={() => setIsModalOpen(true)}
+          >
+            <MdDeleteOutline className="text-xl" />
+            <p className="hidden sm:block">Delete Memory</p>
+          </div>
+          <div className="flex flex-row gap-1 hover:text-primary cursor-pointer">
+            <CiExport className="text-xl" />
+            <p className="hidden sm:block">Export Memory</p>
+          </div>
         </div>
         <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[60%] p-8 relative">
           <div
@@ -94,6 +105,7 @@ const Playback = () => {
               ) : (
                 <video
                   src={currentMediaUrl}
+                  autoPlay
                   controls
                   onEnded={() =>
                     setCurrentIndex(
@@ -106,7 +118,7 @@ const Playback = () => {
             ) : null}
           </div>
         </div>
-        <div className="flex flex-row items-center gap-3 flex-wrap">
+        <div className="flex flex-row items-center gap-3 flex-wrap px-3 sm:px-0">
           {vibe?.media.map((item, index) => (
             <div
               key={item.id}

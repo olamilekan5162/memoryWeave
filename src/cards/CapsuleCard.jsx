@@ -29,7 +29,8 @@ const CapsuleCard = ({ title, media, date, location, onclick }) => {
             ) : (
               <video
                 src={URL.createObjectURL(item.file)}
-                controls
+                autoPlay
+                muted
                 className="w-full h-full object-cover"
               />
             )}
