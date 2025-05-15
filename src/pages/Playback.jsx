@@ -6,6 +6,7 @@ import { deleteVibe } from "../utils/indexedDB";
 import { MdDeleteOutline } from "react-icons/md";
 import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 import { CiExport } from "react-icons/ci";
+import { IoReturnDownBackSharp } from "react-icons/io5";
 
 const Playback = () => {
   const [vibe, setVibe] = useState(null);
@@ -70,17 +71,23 @@ const Playback = () => {
     <>
       <Header />
       <div className="flex flex-col items-center justify-center h-full w-full gap-5 py-10 mt-[120px]">
-        <div className="flex flex-row gap-5 items-center self-end pr-10">
-          <div
-            className="flex flex-row gap-1 hover:text-primary cursor-pointer"
-            onClick={() => setIsModalOpen(true)}
-          >
-            <MdDeleteOutline className="text-xl" />
-            <p className="hidden sm:block">Delete Memory</p>
-          </div>
-          <div className="flex flex-row gap-1 hover:text-primary cursor-pointer">
-            <CiExport className="text-xl" />
-            <p className="hidden sm:block">Export Memory</p>
+        <div className="flex flex-row gap-5 items-center justify-between pl-5 border-l-8 h-[40px] w-[90%] border-primary">
+          <IoReturnDownBackSharp
+            className="text-xl hover:text-primary cursor-pointer"
+            onClick={() => navigate("/")}
+          />
+          <div className="flex flex-row items-center gap-5">
+            <div
+              className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <MdDeleteOutline />
+              <p className="hidden sm:block">Delete Memory</p>
+            </div>
+            <div className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer">
+              <CiExport />
+              <p className="hidden sm:block">Export Memory</p>
+            </div>
           </div>
         </div>
         <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[60%] p-8 relative">
