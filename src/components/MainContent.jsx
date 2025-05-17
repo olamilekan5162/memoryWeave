@@ -6,11 +6,13 @@ import { useEffect, useState, useRef } from "react";
 import { CiImport } from "react-icons/ci";
 import MobileSearchBar from "../modal/MobileSearchBar.jsx"
 
-const Main = ({openSearch}) => {
+const Main = ({openSearch, searchQuery, setSearchQuery}) => {
   const navigate = useNavigate();
   const [vibes, setVibes] = useState(null);
   const fileInputRef = useRef(null);
   const [filtered, setFiltered] = useState("all")
+  const [sortOrder, setSortOrder] = useState("newest")
+  
 
   useEffect(() => {
     const getVibes = async () => {
@@ -23,7 +25,21 @@ const Main = ({openSearch}) => {
   
   const filteredVibe = vibes?.filter((filterVibe) =>
   filterVibe.tags.some((tag) => tag.toLowerCase().includes(filtered.toLowerCase())) || filtered === "all"
+).sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    if (sortOrder === "newest") {
+      return dateB - dateA;
+    } else if (sortOrder === "oldest") {
+      return dateA - dateB;
+    } else {
+      return 0;
+    }
+  });
+  
+  const searchedVibes = filteredVibe?.filter((vibe) => vibe.title.toLowerCase().includes(searchQuery.toLowerCase()) || vibe.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
 );
+
 
 
   const handleFilePicked = async (e) => {
@@ -73,7 +89,8 @@ const Main = ({openSearch}) => {
         </div>
         <div className="flex flex-row items-center">
           <p>Sort by Date:</p>
-          <select className="px-2 py-1 border-0 outline-0">
+          <select className="px-2 py-1 border-0 outline-0"
+          onChange={(e) => setSortOrder(e.target.value)}>
             <option value="newest" selected>
               Newest
             </option>
@@ -82,7 +99,19 @@ const Main = ({openSearch}) => {
         </div>
       </div>
       <div className="flex flex-row gap-6 md:gap-12 px-[50px] md:px-3 flex-wrap justify-center md:justify-start">
-        {vibes &&
+        {vibes && (
+        searchQuery ?
+          searchedVibes.map((vibe) => (
+            <CapsuleCard
+              key={vibe.id}
+              title={vibe.title}
+              date={vibe.date}
+              media={vibe.media}
+              location={vibe.location}
+              onclick={() => navigate(`/${vibe.id}`)}
+            />
+          ))
+        :  
           filteredVibe.map((vibe) => (
             <CapsuleCard
               key={vibe.id}
@@ -92,11 +121,13 @@ const Main = ({openSearch}) => {
               location={vibe.location}
               onclick={() => navigate(`/${vibe.id}`)}
             />
-          ))}
+          ))
+        )}
       </div>
     <MobileSearchBar
       isOpen={openSearch}
-      onSearch={handleSearch}
+      setSearchQuery={setSearchQuery}
+      searchQuery={searchQuery}
     />
     </main>
     </>

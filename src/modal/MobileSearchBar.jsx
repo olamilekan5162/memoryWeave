@@ -1,5 +1,5 @@
 import { CiSearch } from "react-icons/ci";
-const MobileSearchBar = ({ isOpen, onSearch }) => {
+const MobileSearchBar = ({ isOpen, onSearch, searchQuery, setSearchQuery }) => {
   if (!isOpen) return null;
   return (
     <div className="fixed top-30 h-[100px] w-full bg-[#ffffff] flex items-center">
@@ -7,8 +7,10 @@ const MobileSearchBar = ({ isOpen, onSearch }) => {
         <input
           placeholder="Search for memories by tag, title ..."
           className="border-0 outline-0 w-full text-sm text-text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <CiSearch className="text-3xl cursor-pointer" onClick={onSearch}/>
+        <CiSearch className="text-3xl cursor-pointer"/>
       </div>
     </div>
   );

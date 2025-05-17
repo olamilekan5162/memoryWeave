@@ -2,7 +2,7 @@ import { CiSearch } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa6";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-const Header = ({openSearch, setOpenSearch}) => {
+const Header = ({openSearch, setOpenSearch, searchQuery, setSearchQuery}) => {
   const navigate = useNavigate();
   return (
     <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md">
@@ -13,6 +13,8 @@ const Header = ({openSearch, setOpenSearch}) => {
 
       <div className="hidden sm:flex flex-row gap-1 items-center border-1 border-gray-300 w-[40%] py-2 px-5 rounded">
         <input
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search for memories by tag, title, date ..."
           className="border-0 outline-0 w-full text-text"
         />
