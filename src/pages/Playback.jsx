@@ -67,21 +67,20 @@ const Playback = () => {
     navigate("/");
   };
 
-const exportCapsule = async () => {
-  const jsonStr = await exportVibe(vibe);
+  const exportCapsule = async () => {
+    const jsonStr = await exportVibe(vibe);
 
-  const blob = new Blob([jsonStr], { type: "application/json" });
+    const blob = new Blob([jsonStr], { type: "application/json" });
 
-  const url = URL.createObjectURL(blob);
-  const a   = document.createElement("a");
-  a.href = url;
-  a.download = vibe?.title;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url)
-}
-
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = vibe?.title;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <>
@@ -100,7 +99,10 @@ const exportCapsule = async () => {
               <MdDeleteOutline />
               <p className="hidden sm:block">Delete Memory</p>
             </div>
-            <div className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer" onClick={() => exportCapsule()}>
+            <div
+              className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer"
+              onClick={() => exportCapsule()}
+            >
               <CiExport />
               <p className="hidden sm:block">Export Memory</p>
             </div>
