@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import CapsuleCard from "../cards/Capsulecard";
+import CapsuleCard from "../cards/CapsuleCard";
 import { getAllVibes } from "../utils/indexedDB.js";
-import { useEffect, useState } from "react";
+import { importVibe } from "../utils/indexedDB.js";
+import { useEffect, useState, useRef } from "react";
 import { CiImport } from "react-icons/ci";
-const Main = () => {
+import MobileSearchBar from "../modal/MobileSearchBar.jsx"
+
+const Main = ({openSearch}) => {
   const navigate = useNavigate();
   const [vibes, setVibes] = useState(null);
+  const fileInputRef = useRef(null);
+  const [filtered, setFiltered] = useState("all")
 
   useEffect(() => {
     const getVibes = async () => {
@@ -14,19 +19,41 @@ const Main = () => {
       console.log(vibe);
     };
     getVibes();
-  }, []);
+  }, [vibes]);
+  
+  const filteredVibe = vibes?.filter((filterVibe) =>
+  filterVibe.tags.some((tag) => tag.toLowerCase().includes(filtered.toLowerCase())) || filtered === "all"
+);
 
-  const handleImport = () => {
-    alert("imported");
+
+  const handleFilePicked = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const jsonStr = await file.text();
+    await importVibe(jsonStr);
+    alert("Capsule imported");
+    e.target.value = "";
+  };
+  
+  const handleSearch = () => {
+    alert("searched");
   };
   return (
+    <>
     <main className="flex flex-col gap-5 px-4 md:px-[250px] text-text">
       <div className="flex flex-row items-center justify-between text-text">
         <h1 className="font-bold text-2xl">Memory Capsule</h1>
         <div
           className="flex flex-row items-center hover:text-primary cursor-pointer"
-          onClick={handleImport}
+          onClick={() => fileInputRef.current.click()}
         >
+        <input
+        type="file"
+        accept="application/json"
+        ref={fileInputRef}
+        className="hidden"
+        onChange={handleFilePicked}
+      />
           <CiImport />
           <p className="hidden sm:block">Import Memory</p>
         </div>
@@ -34,13 +61,14 @@ const Main = () => {
       <div className="flex flex-row gap-2 flex-wrap">
         <div className="flex flex-row items-center">
           <p>Filter by Tags:</p>
-          <select className="px-2 py-1 border-0 outline-0">
+          <select className="px-2 py-1 border-0 outline-0"
+          onChange={(e) => setFiltered(e.target.value)}>
             <option value="all" selected>
               All Memories
             </option>
-            <option value="happy">Beach</option>
-            <option value="sad">Birthday</option>
-            <option value="sad">hangout</option>
+            <option value="beach">Beach</option>
+            <option value="birthday">Birthday</option>
+            <option value="hangout">hangout</option>
           </select>
         </div>
         <div className="flex flex-row items-center">
@@ -55,7 +83,7 @@ const Main = () => {
       </div>
       <div className="flex flex-row gap-6 md:gap-12 px-[50px] md:px-3 flex-wrap justify-center md:justify-start">
         {vibes &&
-          vibes.map((vibe) => (
+          filteredVibe.map((vibe) => (
             <CapsuleCard
               key={vibe.id}
               title={vibe.title}
@@ -66,7 +94,12 @@ const Main = () => {
             />
           ))}
       </div>
+    <MobileSearchBar
+      isOpen={openSearch}
+      onSearch={handleSearch}
+    />
     </main>
+    </>
   );
 };
 

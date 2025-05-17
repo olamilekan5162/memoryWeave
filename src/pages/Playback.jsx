@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { getVibeById } from "../utils/indexedDB";
 import { deleteVibe } from "../utils/indexedDB";
+import { exportVibe } from "../utils/indexedDB";
 import { MdDeleteOutline } from "react-icons/md";
 import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 import { CiExport } from "react-icons/ci";
@@ -62,10 +63,25 @@ const Playback = () => {
 
   const handleDelete = () => {
     deleteVibe(id);
-    alert("File deleted");
     setIsModalOpen(false);
     navigate("/");
   };
+
+const exportCapsule = async () => {
+  const jsonStr = await exportVibe(vibe);
+
+  const blob = new Blob([jsonStr], { type: "application/json" });
+
+  const url = URL.createObjectURL(blob);
+  const a   = document.createElement("a");
+  a.href = url;
+  a.download = vibe?.title;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url)
+}
+
 
   return (
     <>
@@ -84,7 +100,7 @@ const Playback = () => {
               <MdDeleteOutline />
               <p className="hidden sm:block">Delete Memory</p>
             </div>
-            <div className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer">
+            <div className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer" onClick={() => exportCapsule()}>
               <CiExport />
               <p className="hidden sm:block">Export Memory</p>
             </div>

@@ -26,14 +26,15 @@ export async function saveVibe(vibe) {
     const request = store.put(vibe);
 
     request.onsuccess = () => {
-      alert("Vibe saved successfully");
+      alert("Memory weaved successfully");
       db.close();
       resolve();
     };
     request.onerror = () => {
       console.error("Error saving vibe");
+      alert("Failed to weave memory, try again")
       db.close();
-      reject("Failed to save vibe");
+      reject("Failed to Weave Memory");
     };
   });
 }
@@ -82,12 +83,83 @@ export async function deleteVibe(id) {
     const request = store.delete(id);
 
     request.onsuccess = () => {
+      alert("Weave deleted successfully")
       db.close();
       resolve();
     };
     request.onerror = () => {
+      alert("Failed delete Weave, try again")
       db.close();
       reject("Failed to delete vibe");
     };
   });
 }
+
+export const importVibe = async (jsonString) => {
+  const capsule = JSON.parse(jsonString);
+
+  const mediaWithFiles = await Promise.all(
+    capsule.media.map(async (item) => {
+      const file = base64ToFile(item.file, item.name, item.type);
+      return {
+        ...item,
+        file,
+      };
+    })
+  );
+
+  const reconstructedCapsule = {
+    ...capsule,
+    media: mediaWithFiles,
+  };
+
+  await saveVibe(reconstructedCapsule);
+  return true;
+};
+
+const base64ToFile = (base64String, filename, mimeType) => {
+  const arr = base64String.split(",");
+  const mime = mimeType || arr[0].match(/:(.*?);/)[1];
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], filename, { type: mime });
+};
+
+
+export const exportVibe = async (capsule) => {
+
+  if (!capsule) throw new Error("Capsule not found");
+  
+  const mediaWithBase64 = await Promise.all(
+    capsule.media.map(async (item) => {
+      const base64 = await fileToBase64(item.file);
+      return {
+        ...item,
+        file: base64, // base64 string
+      };
+    })
+  );
+
+  const capsuleJSON = {
+    ...capsule,
+    media: mediaWithBase64,
+  };
+
+  return JSON.stringify(capsuleJSON);
+};
+
+const fileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
+
