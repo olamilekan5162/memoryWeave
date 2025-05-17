@@ -171,6 +171,36 @@ const Playback = () => {
             </div>
           ))}
         </div>
+
+        {vibe && (
+          <div className="w-[95%] sm:w-[60%] px-6 py-4 border-1 border-gray-300 rounded-lg bg-white/70 backdrop-blur-md shadow-sm space-y-2">
+            <h2 className="text-xl font-semibold text-gray-800 flex flex-wrap gap-2 items-center">
+              {vibe.title}
+              <span className="text-sm font-normal text-gray-500">
+                · {vibe.date} · {vibe.location}
+              </span>
+            </h2>
+
+            {vibe.tags?.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {vibe.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="px-2 py-[2px] text-xs bg-primary/10 text-primary rounded-full border border-primary/20"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {vibe.journal && (
+              <p className="text-sm leading-relaxed text-gray-700 whitespace-pre-wrap max-h-[100px] sm:max-h-[160px] overflow-y-auto">
+                {vibe.journal}
+              </p>
+            )}
+          </div>
+        )}
         <DeleteConfirmationModal
           onClose={() => setIsModalOpen(false)}
           isOpen={isModalOpen}

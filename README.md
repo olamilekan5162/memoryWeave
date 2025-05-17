@@ -1,5 +1,9 @@
 # MemoryWeave ✨
 
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+![React](https://img.shields.io/badge/built%20with-React-61DAFB)
+![TailwindCSS](https://img.shields.io/badge/styled%20with-TailwindCSS-38B2AC)
+
 **Weave together your photos, videos, journal entries, music, and ambiance to craft rich, immersive experiences from your most cherished memories.** MemoryWeave empowers you to go beyond static galleries and transform your digital keepsakes into dynamic, shareable narratives.
 
 **[Link to Your Demo Video Here - e.g., YouTube, Loom, Vimeo]**
@@ -12,7 +16,7 @@ In a world overflowing with digital photos and videos, our memories often get lo
 - **Craft Immersive Narratives:** Don't just show photos; tell the story. Combine your media with journaling, thematic music, and ambient sounds to reconstruct the _feeling_ of a memory.
 - **Your Personal Touch:** With features like custom visual themes (e.g., Vintage, Golden Hour), the Ken Burns effect for photos, and fine-tuned audio mixing, you are the director of your memory experience.
 - **All Your Memories, Always Yours:** MemoryWeave operates entirely in your browser. All your data is stored locally using IndexedDB, ensuring privacy and ownership. No cloud accounts, no subscriptions.
-- **Share Your Woven Memories:** Export your crafted "Vibes" as JSON files to back them up or share them with other MemoryWeave users. Or, export a fully self-contained HTML 'Mini-Site' of your Vibe that anyone can view in their browser, no app needed!")\_
+- **Share Your Woven Memories:** Export your crafted "Vibes" as JSON files to back them up or share them with other MemoryWeave users. Or, export a fully self-contained HTML 'Mini-Site' of your Vibe that anyone can view in their browser, no app needed!
 - **Rediscover & Relive:** Easily search, filter by tags, and sort your memory capsules. Let MemoryWeave help you stumble upon forgotten gems from your past.
 
 MemoryWeave is for anyone who wants to do more with their memories than just let them sit in a folder. It's for storytellers, nostalgists, and anyone looking to preserve and share their life's moments in a more meaningful way.
@@ -57,26 +61,20 @@ Follow these instructions to get MemoryWeave up and running on your local machin
 1.  **Clone the repository:**
 
     ```bash
-    git clone [Your GitHub Repository Link Here]
+    git clone https://github.com/olamilekan5162/memoryWeave.git
     cd memoryweave
     ```
-
-    _(Adjust `cd memoryweave` if your repo folder has a different name)_
 
 2.  **Install dependencies:**
 
     ```bash
     npm install
-    # or
-    # yarn install
     ```
 
 3.  **Run the development server:**
 
     ```bash
     npm run dev
-    # or
-    # yarn dev
     ```
 
     This will typically start the application on `http://localhost:5173` (Vite's default). Open this URL in your browser.
@@ -84,20 +82,23 @@ Follow these instructions to get MemoryWeave up and running on your local machin
 4.  **To build for production (optional):**
     ```bash
     npm run build
-    # or
-    # yarn build
     ```
     This will create a `dist` folder with the optimized static assets.
 
-## License 📄
+## 🧑‍💻 Collaborators
 
-This project is licensed under the **[Choose One: MIT License or Apache License 2.0]**. See the `LICENSE` file for details.
+- [Opeyemi Olalekan](https://github.com/olamilekan5162)
 
-_(Create a `LICENSE` file in your repo root with the text of your chosen license)._
+## 🔗 Links
 
-## Contact 📬
+- 💻 Live Demo: [ChemVerse Live](https://chem-verse.vercel.app/)
 
-- **Discord:** [Your Discord Handle (e.g., yourusername#1234)]
-- **X (Twitter):** @[Your X Handle (Optional)]
+- 📁 [GitHub Repository](https://github.com/olamilekan5162/memoryWeave)
+
+- 🗨️ Discord: [@Oracle5163](https://discordapp.com/users/oracle5163)
+
+## 📄 License
+
+This project is licensed under **MIT LICENSE**. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
 
 ---
