@@ -2,10 +2,10 @@ import { CiSearch } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa6";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-const Header = ({openSearch, setOpenSearch, searchQuery, setSearchQuery}) => {
+const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
   const navigate = useNavigate();
   return (
-    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md">
+    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md z-50">
       <h1 className="text-3xl font-bold text-primary">
         MEMORY
         <span className="text-secondary block">WEAVE</span>
@@ -21,7 +21,10 @@ const Header = ({openSearch, setOpenSearch, searchQuery, setSearchQuery}) => {
         <CiSearch className="text-3xl cursor-pointer" />
       </div>
 
-      <CiSearch className="text-3xl sm:hidden" onClick={() => setOpenSearch(!openSearch)}/>
+      <CiSearch
+        className="text-3xl sm:hidden"
+        onClick={() => setOpenSearch(!openSearch)}
+      />
 
       <div className="hidden  sm:block">
         <Button

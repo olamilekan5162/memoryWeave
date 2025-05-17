@@ -110,7 +110,7 @@ const Playback = () => {
         </div>
         <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[60%] p-8 relative">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg z-0"
             style={{
               backgroundImage:
                 vibe?.media?.[currentIndex]?.file instanceof Blob
@@ -147,7 +147,7 @@ const Playback = () => {
           {vibe?.media.map((item, index) => (
             <div
               key={item.id}
-              className={`h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] hover:scale-106 border-1 border-gray-300 rounded overflow-hidden ${
+              className={`h-[50px] w-[50px] sm:h-[60px] sm:w-[60px] hover:scale-106 border-1 border-gray-300 rounded overflow-hidden ${
                 currentIndex === index ? "scale-106" : ""
               }`}
               onClick={() => setCurrentIndex(index)}
@@ -173,7 +173,7 @@ const Playback = () => {
         </div>
 
         {vibe && (
-          <div className="w-[95%] sm:w-[60%] px-6 py-4 border-1 border-gray-300 rounded-lg bg-white/70 backdrop-blur-md shadow-sm space-y-2">
+          <div className="w-[95%] sm:w-[50%] px-6 py-4 border-1 border-gray-300 rounded-lg bg-white/70 backdrop-blur-md shadow-sm space-y-2">
             <h2 className="text-xl font-semibold text-gray-800 flex flex-wrap gap-2 items-center">
               {vibe.title}
               <span className="text-sm font-normal text-gray-500">
@@ -186,7 +186,7 @@ const Playback = () => {
                 {vibe.tags.map((t) => (
                   <span
                     key={t}
-                    className="px-2 py-[2px] text-xs bg-primary/10 text-primary rounded-full border border-primary/20"
+                    className="px-2 py-[2px] text-xs  text-primary rounded-full border border-gray-300"
                   >
                     {t}
                   </span>
