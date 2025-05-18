@@ -2,7 +2,7 @@ import { GiPin } from "react-icons/gi";
 const CapsuleCard = ({ title, media, date, location, onclick }) => {
   return (
     <div
-      className="relative flex flex-col shadow-xl w-[200px] h-[200px] p-2 border-1 border-gray-300 hover:scale-105 transition-transform rounded cursor-pointer"
+      className="relative flex flex-col shadow-xl w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] p-2 border-1 bg-[#f9fafb] border-gray-300 hover:scale-105 transition-transform rounded cursor-pointer"
       onClick={onclick}
     >
       <div className="flex flex-row items-center justify-center gap-4 border-b-1 border-dashed border-gray-300 py-1">

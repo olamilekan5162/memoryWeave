@@ -176,7 +176,7 @@ const AddCapsule = () => {
               onChange={handleMediaChange}
             />
           </label>
-          <Button text={"Save Vibe"} />
+          <Button text={"Save Weave"} />
         </form>
       </div>
     </>

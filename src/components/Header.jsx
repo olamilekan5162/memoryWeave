@@ -1,15 +1,19 @@
 import { CiSearch } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa6";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import weave from "../assets/weave.png";
 const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
   const navigate = useNavigate();
   return (
-    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md z-50">
-      <h1 className="text-3xl font-bold text-primary">
-        MEMORY
-        <span className="text-secondary block">WEAVE</span>
-      </h1>
+    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md z-1">
+      <Link className="flex flex-row items-center gap-2" to={"/"}>
+        <img src={weave} alt="" className="w-[50px] h-auto" />
+        <h1 className="text-3xl font-bold text-primary">
+          MEMORY
+          <span className="text-text block">WEAVE</span>
+        </h1>
+      </Link>
 
       <div className="hidden sm:flex flex-row gap-1 items-center border-1 border-gray-300 w-[40%] py-2 px-5 rounded">
         <input
@@ -28,7 +32,7 @@ const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
 
       <div className="hidden  sm:block">
         <Button
-          text={"+ Create New Vibe"}
+          text={"+ Weave a Memory"}
           onclick={() => navigate("/upload")}
         ></Button>
       </div>

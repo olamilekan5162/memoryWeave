@@ -8,6 +8,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 import { CiExport } from "react-icons/ci";
 import { IoReturnDownBackSharp } from "react-icons/io5";
+import vidBg from "../assets/black.jpg";
 
 const Playback = () => {
   const [vibe, setVibe] = useState(null);
@@ -112,14 +113,17 @@ const Playback = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg z-0"
             style={{
-              backgroundImage:
-                vibe?.media?.[currentIndex]?.file instanceof Blob
-                  ? `url(${currentMediaUrl})`
-                  : "none",
+              backgroundImage: vibe?.media?.[currentIndex]?.type?.startsWith(
+                "video/"
+              )
+                ? `url(${vidBg})`
+                : currentMediaUrl
+                ? `url(${currentMediaUrl})`
+                : "none",
               backgroundSize: "cover",
             }}
           />
-          <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="relative z-0 h-full flex items-center justify-center">
             {vibe?.media?.[currentIndex]?.file instanceof Blob ? (
               vibe.media[currentIndex].type.startsWith("image/") ? (
                 <img
@@ -143,11 +147,14 @@ const Playback = () => {
             ) : null}
           </div>
         </div>
-        <div className="flex flex-row items-center gap-3 flex-wrap px-3 sm:px-0">
+
+        {/* thumb nail */}
+
+        <div className="flex flex-row items-center justify-center sm:w-[50%] gap-3 flex-wrap px-3 sm:px-0">
           {vibe?.media.map((item, index) => (
             <div
               key={item.id}
-              className={`h-[50px] w-[50px] sm:h-[60px] sm:w-[60px] hover:scale-106 border-1 border-gray-300 rounded overflow-hidden ${
+              className={`h-[50px] w-[50px] sm:h-[80px] sm:w-[80px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
                 currentIndex === index ? "scale-106" : ""
               }`}
               onClick={() => setCurrentIndex(index)}
@@ -173,8 +180,8 @@ const Playback = () => {
         </div>
 
         {vibe && (
-          <div className="w-[95%] sm:w-[50%] px-6 py-4 border-1 border-gray-300 rounded-lg bg-white/70 backdrop-blur-md shadow-sm space-y-2">
-            <h2 className="text-xl font-semibold text-gray-800 flex flex-wrap gap-2 items-center">
+          <div className="w-[95%] sm:w-[50%] px-6 py-4 border-1 border-gray-300 rounded-lg space-y-2">
+            <h2 className="text-xl font-semibold text-text flex flex-wrap gap-2 items-center">
               {vibe.title}
               <span className="text-sm font-normal text-gray-500">
                 · {vibe.date} · {vibe.location}
@@ -195,7 +202,7 @@ const Playback = () => {
             )}
 
             {vibe.journal && (
-              <p className="text-sm leading-relaxed text-gray-700 whitespace-pre-wrap max-h-[100px] sm:max-h-[160px] overflow-y-auto">
+              <p className="text-sm leading-relaxed text-text whitespace-pre-wrap max-h-[100px] sm:max-h-[160px] overflow-y-auto">
                 {vibe.journal}
               </p>
             )}

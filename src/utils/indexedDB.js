@@ -1,5 +1,5 @@
-const DB_NAME = "SummerVibeDB";
-const STORE_NAME = "userVibes";
+const DB_NAME = "MemoryWeaveDB";
+const STORE_NAME = "userWeave";
 const DB_VERSION = 1;
 
 function openDB() {
@@ -31,8 +31,8 @@ export async function saveVibe(vibe) {
       resolve();
     };
     request.onerror = () => {
-      console.error("Error saving vibe");
-      alert("Failed to weave memory, try again")
+      console.error("Error saving weave");
+      alert("Failed to weave memory, try again");
       db.close();
       reject("Failed to Weave Memory");
     };
@@ -83,12 +83,12 @@ export async function deleteVibe(id) {
     const request = store.delete(id);
 
     request.onsuccess = () => {
-      alert("Weave deleted successfully")
+      alert("Weave deleted successfully");
       db.close();
       resolve();
     };
     request.onerror = () => {
-      alert("Failed delete Weave, try again")
+      alert("Failed delete Weave, try again");
       db.close();
       reject("Failed to delete vibe");
     };
@@ -131,11 +131,9 @@ const base64ToFile = (base64String, filename, mimeType) => {
   return new File([u8arr], filename, { type: mime });
 };
 
-
 export const exportVibe = async (capsule) => {
-
   if (!capsule) throw new Error("Capsule not found");
-  
+
   const mediaWithBase64 = await Promise.all(
     capsule.media.map(async (item) => {
       const base64 = await fileToBase64(item.file);
@@ -162,4 +160,3 @@ const fileToBase64 = (file) => {
     reader.readAsDataURL(file);
   });
 };
-

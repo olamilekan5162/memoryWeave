@@ -75,7 +75,7 @@ const Main = ({ openSearch, searchQuery, setSearchQuery }) => {
               onChange={handleFilePicked}
             />
             <CiImport />
-            <p className="hidden sm:block">Import Memory</p>
+            <p className="hidden sm:block">Import Weave</p>
           </div>
         </div>
         <div className="flex flex-row gap-2 flex-wrap">
@@ -106,7 +106,7 @@ const Main = ({ openSearch, searchQuery, setSearchQuery }) => {
             </select>
           </div>
         </div>
-        <div className="flex flex-row gap-6 md:gap-12 px-[50px] md:px-3 flex-wrap justify-center md:justify-start">
+        <div className="flex flex-row gap-6 sm:gap-12 sm:px-3 flex-wrap justify-center sm:justify-start">
           {vibes &&
             (searchQuery
               ? searchedVibes.map((vibe) => (
