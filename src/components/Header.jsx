@@ -9,7 +9,7 @@ const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
     <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md z-1">
       <Link className="flex flex-row items-center gap-2" to={"/"}>
         <img src={weave} alt="" className="w-[50px] h-auto" />
-        <h1 className="text-3xl font-bold text-primary">
+        <h1 className="text-2xl font-bold text-primary">
           MEMORY
           <span className="text-text block">WEAVE</span>
         </h1>

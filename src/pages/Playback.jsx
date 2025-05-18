@@ -109,105 +109,118 @@ const Playback = () => {
             </div>
           </div>
         </div>
-        <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[60%] p-8 relative">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg z-0"
-            style={{
-              backgroundImage: vibe?.media?.[currentIndex]?.type?.startsWith(
-                "video/"
-              )
-                ? `url(${vidBg})`
-                : currentMediaUrl
-                ? `url(${currentMediaUrl})`
-                : "none",
-              backgroundSize: "cover",
-            }}
-          />
-          <div className="relative z-0 h-full flex items-center justify-center">
-            {vibe?.media?.[currentIndex]?.file instanceof Blob ? (
-              vibe.media[currentIndex].type.startsWith("image/") ? (
-                <img
-                  src={currentMediaUrl}
-                  alt=""
-                  className="max-h-full max-w-full object-contain"
-                />
-              ) : (
-                <video
-                  src={currentMediaUrl}
-                  autoPlay
-                  controls
-                  onEnded={() =>
-                    setCurrentIndex(
-                      (prevIndex) => (prevIndex + 1) % vibe.media.length
-                    )
-                  }
-                  className="max-h-full max-w-full object-contain"
-                />
-              )
-            ) : null}
-          </div>
-        </div>
 
-        {/* thumb nail */}
-
-        <div className="flex flex-row items-center justify-center sm:w-[50%] gap-3 flex-wrap px-3 sm:px-0">
-          {vibe?.media.map((item, index) => (
-            <div
-              key={item.id}
-              className={`h-[50px] w-[50px] sm:h-[80px] sm:w-[80px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
-                currentIndex === index ? "scale-106" : ""
-              }`}
-              onClick={() => setCurrentIndex(index)}
-            >
-              {item.file instanceof Blob && item.type.startsWith("image/") ? (
-                <img
-                  src={URL.createObjectURL(item.file)}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              ) : item.file instanceof Blob &&
-                item.type.startsWith("video/") ? (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  src={URL.createObjectURL(item.file)}
-                  className="w-full h-full object-cover"
-                />
-              ) : null}
+        <div className="grid grid-cols-6 w-[90%]">
+          <div className="w-full flex flex-col items-center gap-10 col-span-4 h-screen overflow-y-auto">
+            {/* playback */}
+            <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[80%] sm:w-[90%] p-8 relative">
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md z-0"
+                style={{
+                  backgroundImage: vibe?.media?.[
+                    currentIndex
+                  ]?.type?.startsWith("video/")
+                    ? `url(${vidBg})`
+                    : currentMediaUrl
+                    ? `url(${currentMediaUrl})`
+                    : "none",
+                  backgroundSize: "cover",
+                }}
+              />
+              <div className="relative z-0 h-full flex items-center justify-center">
+                {vibe?.media?.[currentIndex]?.file instanceof Blob ? (
+                  vibe.media[currentIndex].type.startsWith("image/") ? (
+                    <img
+                      src={currentMediaUrl}
+                      alt=""
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  ) : (
+                    <video
+                      src={currentMediaUrl}
+                      autoPlay
+                      controls
+                      onEnded={() =>
+                        setCurrentIndex(
+                          (prevIndex) => (prevIndex + 1) % vibe.media.length
+                        )
+                      }
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  )
+                ) : null}
+              </div>
             </div>
-          ))}
-        </div>
+            {/* playback end */}
 
-        {vibe && (
-          <div className="w-[95%] sm:w-[50%] px-6 py-4 border-1 border-gray-300 rounded-lg space-y-2">
-            <h2 className="text-xl font-semibold text-text flex flex-wrap gap-2 items-center">
-              {vibe.title}
-              <span className="text-sm font-normal text-gray-500">
-                · {vibe.date} · {vibe.location}
-              </span>
-            </h2>
+            {/* thumb nail */}
+            <div className="flex flex-row items-center justify-center sm:w-[80%] gap-3 flex-wrap px-3 sm:px-0">
+              {vibe?.media.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`h-[50px] w-[50px] sm:h-[80px] sm:w-[80px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
+                    currentIndex === index ? "scale-106" : ""
+                  }`}
+                  onClick={() => setCurrentIndex(index)}
+                >
+                  {item.file instanceof Blob &&
+                  item.type.startsWith("image/") ? (
+                    <img
+                      src={URL.createObjectURL(item.file)}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  ) : item.file instanceof Blob &&
+                    item.type.startsWith("video/") ? (
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      src={URL.createObjectURL(item.file)}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : null}
+                </div>
+              ))}
+            </div>
+            {/* thumbnail end */}
+          </div>
 
-            {vibe.tags?.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {vibe.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="px-2 py-[2px] text-xs  text-primary rounded-full border border-gray-300"
-                  >
-                    {t}
+          {/* journal  */}
+          <div className="col-span-2 flex justify-center h-fit px-4 border-l-1 border-gray-300">
+            {vibe && (
+              <div className="w-[95%] sm:w-[95%] px-6 py-4 border-1 border-gray-300 rounded-lg space-y-2">
+                <h2 className="text-xl font-semibold text-text flex flex-wrap gap-2 items-center">
+                  {vibe.title}
+                  <span className="text-sm font-normal text-gray-500">
+                    · {vibe.date} · {vibe.location}
                   </span>
-                ))}
+                </h2>
+
+                {vibe.tags?.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {vibe.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="px-2 py-[2px] text-xs  text-primary rounded-full border border-gray-300"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {vibe.journal && (
+                  <p className="text-sm leading-relaxed text-text whitespace-pre-wrap h-fit overflow-y-auto">
+                    {vibe.journal}
+                  </p>
+                )}
               </div>
             )}
-
-            {vibe.journal && (
-              <p className="text-sm leading-relaxed text-text whitespace-pre-wrap max-h-[100px] sm:max-h-[160px] overflow-y-auto">
-                {vibe.journal}
-              </p>
-            )}
+            {/* journal end */}
           </div>
-        )}
+        </div>
+
         <DeleteConfirmationModal
           onClose={() => setIsModalOpen(false)}
           isOpen={isModalOpen}

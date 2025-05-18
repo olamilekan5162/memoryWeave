@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { CiImport } from "react-icons/ci";
 import MobileSearchBar from "../modal/MobileSearchBar.jsx";
 
-const Main = ({ openSearch, searchQuery, setSearchQuery }) => {
+const MainContent = ({ openSearch, searchQuery, setSearchQuery }) => {
   const navigate = useNavigate();
   const [vibes, setVibes] = useState(null);
   const fileInputRef = useRef(null);
@@ -140,4 +140,4 @@ const Main = ({ openSearch, searchQuery, setSearchQuery }) => {
   );
 };
 
-export default Main;
+export default MainContent;

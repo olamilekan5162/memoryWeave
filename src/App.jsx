@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Main from "./components/MainContent";
+import MainContent from "./components/MainContent";
 import { useState } from "react";
 
 function App() {
@@ -8,7 +8,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   return (
     <>
-      {/* <div className="flex flex-col items-center border-4 border-red-500 h-[100vh]"> */}
       <Header
         openSearch={openSearch}
         setOpenSearch={setOpenSearch}
@@ -16,7 +15,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <Hero />
-      <Main
+      <MainContent
         openSearch={openSearch}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
