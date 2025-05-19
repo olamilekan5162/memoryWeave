@@ -13,7 +13,7 @@ const EmptyState = () => {
         crafting your first unforgettable moment. What story do you want to
         tell?
       </p>
-      <Button onclick={() => navigate("/")} text={"Weave New Memory"} />
+      <Button onclick={() => navigate("/upload")} text={"Weave New Memory"} />
     </div>
   );
 };

@@ -5,11 +5,13 @@ import { getVibeById } from "../utils/indexedDB";
 import { deleteVibe } from "../utils/indexedDB";
 import { exportVibe } from "../utils/indexedDB";
 import { MdDeleteOutline } from "react-icons/md";
+import { BsFiletypeHtml } from "react-icons/bs";
 import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 import { CiExport } from "react-icons/ci";
 import { IoReturnDownBackSharp } from "react-icons/io5";
 import vidBg from "../assets/black.jpg";
 import Footer from "../components/Footer";
+import { exportMiniSite } from "../utils/miniSite";
 
 const Playback = () => {
   const [vibe, setVibe] = useState(null);
@@ -117,10 +119,17 @@ const Playback = () => {
               <CiExport />
               <p className="hidden sm:block">Export Memory</p>
             </div>
+            <div
+              className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer"
+              onClick={() => exportMiniSite(vibe)}
+            >
+              <BsFiletypeHtml />
+              <p className="hidden sm:block">Export as Mini-Site</p>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-6 w-[90%] gap-5 sm:gap-0">
+        <div className="grid grid-cols-1 sm:grid-cols-6 w-[95%] gap-5 sm:gap-0">
           <div className="w-full flex flex-col items-center gap-3 sm:gap-10 col-span-1 sm:col-span-4 sm:border-r-1 border-gray-300">
             {/* playback */}
             <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[90%] p-8 relative">
@@ -179,6 +188,7 @@ const Playback = () => {
                   item.type.startsWith("image/") ? (
                     <img
                       src={URL.createObjectURL(item.file)}
+                      onLoad={(e) => URL.revokeObjectURL(e.target.src)}
                       alt=""
                       className="w-full h-full object-cover"
                     />
@@ -189,6 +199,7 @@ const Playback = () => {
                       muted
                       loop
                       src={URL.createObjectURL(item.file)}
+                      onLoad={(e) => URL.revokeObjectURL(e.target.src)}
                       className="w-full h-full object-cover"
                     />
                   ) : null}
@@ -201,10 +212,10 @@ const Playback = () => {
           {/* journal  */}
           <div className="col-span-1 sm:col-span-2 flex justify-center h-fit px-4">
             {vibe && (
-              <div className="sm:w-[95%] px-6 py-4 border-1 border-gray-300 rounded-lg space-y-2">
-                <h2 className="text-xl font-semibold text-text flex flex-wrap gap-2 items-center">
+              <div className="sm:w-[95%] sm:px-6 sm:py-4 sm:border-1 border-gray-300 rounded-lg space-y-2">
+                <h2 className="text-xl font-bold text-text">
                   {vibe.title}
-                  <span className="text-sm font-normal text-gray-500">
+                  <span className="block text-sm font-semibold text-gray-500">
                     · {vibe.date} · {vibe.location}
                   </span>
                 </h2>
@@ -225,7 +236,7 @@ const Playback = () => {
                 )}
 
                 {vibe.journal && (
-                  <p className="text-sm leading-relaxed text-text whitespace-pre-wrap max-h-[150px] sm:max-h-fit sm:h-fit overflow-y-auto">
+                  <p className="text-sm leading-relaxed text-text whitespace-pre-wrap max-h-[400px] sm:max-h-fit sm:h-fit overflow-y-auto">
                     {vibe.journal}
                   </p>
                 )}
