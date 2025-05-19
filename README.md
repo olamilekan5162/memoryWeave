@@ -6,8 +6,7 @@
 
 **Weave together your photos, videos, journal entries, music, and ambiance to craft rich, immersive experiences from your most cherished memories.** MemoryWeave empowers you to go beyond static galleries and transform your digital keepsakes into dynamic, shareable narratives.
 
-**[Link to Your Demo Video Here - e.g., YouTube, Loom, Vimeo]**
-_(Make sure this is a prominent link!)_
+**[Link to Your Demo Video Here]**
 
 ## Why MemoryWeave? 🤔
 
@@ -54,7 +53,7 @@ Follow these instructions to get MemoryWeave up and running on your local machin
 **Prerequisites:**
 
 - Node.js (v18.x or later recommended)
-- npm or yarn
+- npm
 
 **Installation & Running:**
 
@@ -91,7 +90,7 @@ Follow these instructions to get MemoryWeave up and running on your local machin
 
 ## 🔗 Links
 
-- 💻 Live Demo: [ChemVerse Live](https://chem-verse.vercel.app/)
+- 💻 Live Demo: [MemoryWeave Live](https://memory-weave.vercel.app/)
 
 - 📁 [GitHub Repository](https://github.com/olamilekan5162/memoryWeave)
 
@@ -100,5 +99,3 @@ Follow these instructions to get MemoryWeave up and running on your local machin
 ## 📄 License
 
 This project is licensed under **MIT LICENSE**. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
-
----
