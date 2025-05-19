@@ -9,6 +9,7 @@ import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 import { CiExport } from "react-icons/ci";
 import { IoReturnDownBackSharp } from "react-icons/io5";
 import vidBg from "../assets/black.jpg";
+import Footer from "../components/Footer";
 
 const Playback = () => {
   const [vibe, setVibe] = useState(null);
@@ -18,6 +19,12 @@ const Playback = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const colors = [
+    "text-primary",
+    "text-red-500",
+    "text-green-500",
+    "text-orange-500",
+  ];
 
   useEffect(() => {
     const getVibe = async () => {
@@ -113,10 +120,10 @@ const Playback = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-6 w-[90%]">
-          <div className="w-full flex flex-col items-center gap-10 col-span-4 h-screen overflow-y-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-6 w-[90%] gap-5 sm:gap-0">
+          <div className="w-full flex flex-col items-center gap-3 sm:gap-10 col-span-1 sm:col-span-4 sm:border-r-1 border-gray-300">
             {/* playback */}
-            <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[80%] sm:w-[90%] p-8 relative">
+            <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[90%] p-8 relative">
               <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm z-0"
                 style={{
@@ -161,7 +168,7 @@ const Playback = () => {
               {vibe?.media.map((item, index) => (
                 <div
                   key={item.id}
-                  className={`h-[50px] w-[50px] sm:h-[50px] sm:w-[50px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
+                  className={`h-[30px] w-[30px] sm:h-[50px] sm:w-[50px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
                     currentIndex === index ? "scale-106" : ""
                   }`}
                   onClick={() => setCurrentIndex(index)}
@@ -190,9 +197,9 @@ const Playback = () => {
           </div>
 
           {/* journal  */}
-          <div className="col-span-2 flex justify-center h-fit px-4 border-l-1 border-gray-300">
+          <div className="col-span-1 sm:col-span-2 flex justify-center h-fit px-4">
             {vibe && (
-              <div className="w-[95%] sm:w-[95%] px-6 py-4 border-1 border-gray-300 rounded-lg space-y-2">
+              <div className="sm:w-[95%] px-6 py-4 border-1 border-gray-300 rounded-lg space-y-2">
                 <h2 className="text-xl font-semibold text-text flex flex-wrap gap-2 items-center">
                   {vibe.title}
                   <span className="text-sm font-normal text-gray-500">
@@ -202,10 +209,12 @@ const Playback = () => {
 
                 {vibe.tags?.length > 0 && (
                   <div className="flex flex-wrap gap-2">
-                    {vibe.tags.map((t) => (
+                    {vibe.tags.map((t, index) => (
                       <span
                         key={t}
-                        className="px-2 py-[2px] text-xs  text-primary rounded-full border border-gray-300"
+                        className={`px-2 py-[2px] text-xs ${
+                          colors[index % colors.length]
+                        } rounded-full border border-gray-300`}
                       >
                         {t}
                       </span>
@@ -214,7 +223,7 @@ const Playback = () => {
                 )}
 
                 {vibe.journal && (
-                  <p className="text-sm leading-relaxed text-text whitespace-pre-wrap h-fit overflow-y-auto">
+                  <p className="text-sm leading-relaxed text-text whitespace-pre-wrap max-h-[150px] sm:max-h-fit sm:h-fit overflow-y-auto">
                     {vibe.journal}
                   </p>
                 )}
@@ -237,6 +246,7 @@ const Playback = () => {
         loop
         className="hidden"
       ></audio>
+      <Footer />
     </>
   );
 };

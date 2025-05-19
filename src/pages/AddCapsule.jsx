@@ -140,15 +140,6 @@ const AddCapsule = () => {
             placeholder="Enter memory tags separated with a comma"
             value={tag}
             onChange={(e) => setTag(e.target.value)}
-            // onChange={(e) => {
-            //   setUserVibe({
-            //     ...userVibe,
-            //     tags: e.target.value
-            //       .split(",")
-            //       .map((tag) => tag.trim())
-            //       .filter((tag) => tag !== ""),
-            //   });
-            // }}
           />
           <label for="jornal" className="text-xl">
             Memories Jornal:

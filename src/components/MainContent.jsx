@@ -106,7 +106,7 @@ const MainContent = ({ openSearch, searchQuery, setSearchQuery }) => {
             </select>
           </div>
         </div>
-        <div className="flex flex-row gap-6 sm:gap-12 sm:px-3 flex-wrap justify-center sm:justify-start">
+        <div className="flex flex-row gap-4 sm:gap-12 sm:px-3 flex-wrap justify-center sm:justify-start">
           {vibes &&
             (searchQuery
               ? searchedVibes.map((vibe) => (
