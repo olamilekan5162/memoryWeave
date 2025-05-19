@@ -168,8 +168,10 @@ const Playback = () => {
               {vibe?.media.map((item, index) => (
                 <div
                   key={item.id}
-                  className={`h-[30px] w-[30px] sm:h-[50px] sm:w-[50px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
-                    currentIndex === index ? "scale-106" : ""
+                  className={`h-[30px] w-[30px] sm:h-[50px] sm:w-[50px] hover:translate-y-[-5px] hover:transition-transform hover:duration-500 border-2 border-gray-300 rounded overflow-hidden ${
+                    currentIndex === index
+                      ? "translate-y-[-3px] sm:translate-y-[-5px] transition-transform duration-500"
+                      : ""
                   }`}
                   onClick={() => setCurrentIndex(index)}
                 >

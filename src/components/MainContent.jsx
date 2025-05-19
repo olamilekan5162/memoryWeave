@@ -5,6 +5,7 @@ import { importVibe } from "../utils/indexedDB.js";
 import { useEffect, useState, useRef } from "react";
 import { CiImport } from "react-icons/ci";
 import MobileSearchBar from "../modal/MobileSearchBar.jsx";
+import EmptyState from "./EmptyState.jsx";
 
 const MainContent = ({ openSearch, searchQuery, setSearchQuery }) => {
   const navigate = useNavigate();
@@ -107,28 +108,33 @@ const MainContent = ({ openSearch, searchQuery, setSearchQuery }) => {
           </div>
         </div>
         <div className="flex flex-row gap-4 sm:gap-12 sm:px-3 flex-wrap justify-center sm:justify-start">
-          {vibes &&
-            (searchQuery
-              ? searchedVibes.map((vibe) => (
-                  <CapsuleCard
-                    key={vibe.id}
-                    title={vibe.title}
-                    date={vibe.date}
-                    media={vibe.media}
-                    location={vibe.location}
-                    onclick={() => navigate(`/${vibe.id}`)}
-                  />
-                ))
-              : filteredVibe.map((vibe) => (
-                  <CapsuleCard
-                    key={vibe.id}
-                    title={vibe.title}
-                    date={vibe.date}
-                    media={vibe.media}
-                    location={vibe.location}
-                    onclick={() => navigate(`/${vibe.id}`)}
-                  />
-                )))}
+          {vibes?.length > 0 ? (
+            searchQuery ? (
+              searchedVibes.map((vibe) => (
+                <CapsuleCard
+                  key={vibe.id}
+                  title={vibe.title}
+                  date={vibe.date}
+                  media={vibe.media}
+                  location={vibe.location}
+                  onclick={() => navigate(`/${vibe.id}`)}
+                />
+              ))
+            ) : (
+              filteredVibe.map((vibe) => (
+                <CapsuleCard
+                  key={vibe.id}
+                  title={vibe.title}
+                  date={vibe.date}
+                  media={vibe.media}
+                  location={vibe.location}
+                  onclick={() => navigate(`/${vibe.id}`)}
+                />
+              ))
+            )
+          ) : (
+            <EmptyState />
+          )}
         </div>
         <MobileSearchBar
           isOpen={openSearch}
