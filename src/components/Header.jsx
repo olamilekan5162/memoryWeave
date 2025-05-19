@@ -32,7 +32,7 @@ const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
 
       <div className="hidden  sm:block">
         <Button
-          text={"+ Weave a Memory"}
+          text={"+ Weave New Memory"}
           onclick={() => navigate("/upload")}
         ></Button>
       </div>

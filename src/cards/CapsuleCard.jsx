@@ -1,11 +1,13 @@
+import { BiCalendar, BiCalendarAlt, BiCalendarEvent } from "react-icons/bi";
+import { CiCalendar, CiCalendarDate, CiLocationOn } from "react-icons/ci";
 import { GiPin } from "react-icons/gi";
 const CapsuleCard = ({ title, media, date, location, onclick }) => {
   return (
     <div
-      className="relative flex flex-col shadow-xl w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] p-2 border-1 bg-[#f9fafb] border-gray-300 hover:scale-105 transition-transform rounded cursor-pointer"
+      className="relative flex flex-col shadow-xl w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] p-2 border-1 bg-[#f9fafb] border-gray-300 hover:scale-101 transition-transform rounded cursor-pointer"
       onClick={onclick}
     >
-      <div className="flex flex-row items-center justify-center gap-4 border-b-1 border-dashed border-gray-300 py-1">
+      <div className="flex flex-row items-center justify-center gap-4 border-b-2 border-dashed border-gray-300 py-1">
         <h1 className="font-bold truncate">{title}</h1>
         <GiPin className="text-red-500 text-l drop-shadow-md" />
       </div>
@@ -38,9 +40,15 @@ const CapsuleCard = ({ title, media, date, location, onclick }) => {
         ))}
       </div>
 
-      <div className="flex flex-row items-center justify-between text-xs mt-auto pt-2">
-        <p>{date}</p>
-        <p>{location}</p>
+      <div className="flex flex-row items-center justify-between text-sm mt-auto pt-2 px-2">
+        <div className="flex flex-row items-center gap-1">
+          <CiCalendar />
+          <p>{date}</p>
+        </div>
+        <div className="flex flex-row items-center gap-1">
+          <CiLocationOn />
+          <p>{location}</p>
+        </div>
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ const AddCapsule = () => {
     ambientSound: "",
     journal: "",
   });
+  const [tag, setTag] = useState(userVibe.tags.join(", "));
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -44,7 +45,13 @@ const AddCapsule = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await saveVibe(userVibe);
+    const tagsArray = tag
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t);
+
+    const vibeToSave = { ...userVibe, tags: tagsArray };
+    await saveVibe(vibeToSave);
     setUserVibe({
       id: uuidv4(),
       title: "",
@@ -131,16 +138,17 @@ const AddCapsule = () => {
             name="tags"
             id="tags"
             placeholder="Enter memory tags separated with a comma"
-            value={userVibe?.tags?.join(", ")}
-            onChange={(e) => {
-              setUserVibe({
-                ...userVibe,
-                tags: e.target.value
-                  .split(",")
-                  .map((tag) => tag.trim())
-                  .filter((tag) => tag !== ""),
-              });
-            }}
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
+            // onChange={(e) => {
+            //   setUserVibe({
+            //     ...userVibe,
+            //     tags: e.target.value
+            //       .split(",")
+            //       .map((tag) => tag.trim())
+            //       .filter((tag) => tag !== ""),
+            //   });
+            // }}
           />
           <label for="jornal" className="text-xl">
             Memories Jornal:

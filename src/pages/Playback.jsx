@@ -88,10 +88,13 @@ const Playback = () => {
       <Header />
       <div className="flex flex-col items-center justify-center h-full w-full gap-5 py-10 mt-[120px]">
         <div className="flex flex-row gap-5 items-center justify-between pl-5 border-l-8 h-[40px] w-[90%] border-primary">
-          <IoReturnDownBackSharp
-            className="text-xl hover:text-primary cursor-pointer"
+          <div
+            className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer"
             onClick={() => navigate("/")}
-          />
+          >
+            <IoReturnDownBackSharp className="text-xl hover:text-primary cursor-pointer" />
+            <p className="hidden sm:block">Back</p>
+          </div>
           <div className="flex flex-row items-center gap-5">
             <div
               className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer"
@@ -115,7 +118,7 @@ const Playback = () => {
             {/* playback */}
             <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[80%] sm:w-[90%] p-8 relative">
               <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md z-0"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm z-0"
                 style={{
                   backgroundImage: vibe?.media?.[
                     currentIndex
@@ -158,7 +161,7 @@ const Playback = () => {
               {vibe?.media.map((item, index) => (
                 <div
                   key={item.id}
-                  className={`h-[50px] w-[50px] sm:h-[80px] sm:w-[80px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
+                  className={`h-[50px] w-[50px] sm:h-[50px] sm:w-[50px] hover:scale-106 border-2 border-gray-300 rounded overflow-hidden ${
                     currentIndex === index ? "scale-106" : ""
                   }`}
                   onClick={() => setCurrentIndex(index)}
