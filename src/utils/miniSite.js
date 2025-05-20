@@ -10,7 +10,7 @@ const blobToDataURL = (blob) =>
   });
 
 export async function exportMiniSite(vibe) {
-  /* 1.  Gather media as data‑URIs (keeps file 100 % offline).  */
+  /* 1.  Gather media as data‑URIs (keeps file 100% offline).  */
   const mediaWithData = await Promise.all(
     vibe.media.map(async (m) => ({
       ...m,
@@ -62,7 +62,9 @@ export async function exportMiniSite(vibe) {
       <aside class="col-span-1 sm:col-span-2 w-full space-y-3">
         <h2 class="text-lg font-semibold">
           ${vibe.title}
-          <span class="block text-sm text-gray-500">${vibe.date} · ${vibe.location}</span>
+          <span class="block text-sm text-gray-500">${vibe.date} · ${
+    vibe.location
+  }</span>
         </h2>
 
         ${
@@ -111,6 +113,10 @@ export async function exportMiniSite(vibe) {
 
       slideBg.style.backgroundImage =
         m.type.startsWith('video/') ? 'url(${vidBg})' : 'url('+m.data+')';
+        slideBg.style.backgroundSize = 'cover';
+        slideBg.style.backgroundRepeat = 'no-repeat';
+        slideBg.style.backgroundPosition = 'center';
+
     }
 
     function buildThumbs() {
@@ -142,9 +148,9 @@ export async function exportMiniSite(vibe) {
 
   /* 3.  Trigger download --------------------------------------------------- */
   const blob = new Blob([html], { type: "text/html" });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement("a");
-  a.href     = url;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
   a.download = `${vibe.title || "vibe"}.html`;
   document.body.appendChild(a);
   a.click();
