@@ -1,4 +1,4 @@
-# MemoryWeave ✨
+# MemoryWeave || Relive your Intriguing Memories
 
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![React](https://img.shields.io/badge/built%20with-React-61DAFB)
