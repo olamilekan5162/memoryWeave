@@ -22,6 +22,7 @@ const AddCapsule = () => {
     journal: "",
   });
   const [tag, setTag] = useState(userVibe.tags.join(", "));
+  const [selectedMedia, setSelectedMedia] = useState([]);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -34,6 +35,7 @@ const AddCapsule = () => {
 
   const handleMediaChange = (e) => {
     const files = Array.from(e.target.files);
+    setSelectedMedia(files);
     const media = files.map((file) => ({
       id: uuidv4(),
       file: file,
@@ -157,13 +159,19 @@ const AddCapsule = () => {
             htmlFor="media"
             className="flex flex-col sm:flex-row items-center w-[100%] mx-auto justify-center cursor-pointer border-1 border-gray-300 py-6 rounded gap-2 sm:gap-12 mt-1"
           >
-            <BsCloudUpload size={50} className="mb-4" />
-            <p className="text-sm p-6 sm:hidden">
-              Select and upload multiple images of your memory
-            </p>
-            <div className="hidden sm:flex flex-col items-center justify-center">
+            <BsCloudUpload size={50} className="mb-2" />
+            <div className="flex flex-col items-center justify-center">
               <h1 className="text-lg font-bold">Summer Memories</h1>
-              <p>Select and upload multiple images of your memory</p>
+              <p className="text-sm sm:text-base px-6 sm:p-0 text-center">
+                Select and upload multiple images of your memory
+              </p>
+              <p className="text-sm text-text italic">
+                {selectedMedia.length === 0
+                  ? "No files selected yet"
+                  : `${selectedMedia.length} file${
+                      selectedMedia.length > 1 ? "s" : ""
+                    } selected`}
+              </p>
             </div>
             <input
               className="hidden"
