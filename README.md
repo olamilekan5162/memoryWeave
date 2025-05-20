@@ -4,13 +4,13 @@
 ![React](https://img.shields.io/badge/built%20with-React-61DAFB)
 ![TailwindCSS](https://img.shields.io/badge/styled%20with-TailwindCSS-38B2AC)
 
-**Weave together your photos, videos, journal entries, music, and ambiance to craft rich, immersive experiences from your most cherished memories.** MemoryWeave empowers you to go beyond static galleries and transform your digital keepsakes into dynamic, shareable narratives.
+**Weave together your photos, videos, journal entries, and ambiance to craft rich, immersive experiences from your most cherished memories.** MemoryWeave empowers you to go beyond static galleries and transform your digital keepsakes into dynamic, shareable narratives.
 
 **[Link to Your Demo Video Here]**
 
 ## Why MemoryWeave? 🤔
 
-In a world overflowing with digital photos and videos, our memories often get lost in the scroll. MemoryWeave offers a unique solution to not just store, but _re-experience_ and _share_ these precious moments in a deeply personal and engaging way.
+In a world overflowing with digital photos and videos, our memories often get lost in the scroll. MemoryWeave helps you rediscover your cherished moments. By intuitively combining your photos, videos, journal entries, and selected ambient sounds into "weaves," it offers a unique way to not just store, but _re-experience_ and _share_ these memories in a deeply personal and engaging way.
 
 - **Craft Immersive Narratives:** Don't just show photos; tell the story. Combine your media with journaling, thematic music, and ambient sounds to reconstruct the _feeling_ of a memory.
 - **All Your Memories, Always Yours:** MemoryWeave operates entirely in your browser. All your data is stored locally using IndexedDB, ensuring privacy and ownership. No cloud accounts, no subscriptions.
@@ -23,7 +23,7 @@ MemoryWeave is for anyone who wants to do more with their memories than just let
 
 - **Capsule Creation:** Create "Memory Capsules" for events, trips, or any moment.
 - **Multimedia Integration:** Add photos, video clips, and detailed journal entries.
-- **Sensory Enhancement:** Select ambient background sounds.
+- **Sensory Enhancement:** Select ambient background sounds to set the mood.
 - **Dynamic Playback:** Experience your memories as an auto-playing slideshow with:
   - Smooth transitions.
   - Integrated journaling display.
@@ -91,10 +91,10 @@ Follow these instructions to get MemoryWeave up and running on your local machin
 
 - 💻 Live Demo: [MemoryWeave Live](https://memory-weave.vercel.app/)
 
-- 📁 Source files: Available in the [GitHub Repository](https://github.com/olamilekan5162/memoryWeave)
+- 📁 Source Repository: [GitHub](https://github.com/olamilekan5162/memoryWeave)
 
-- 🗨️ Discord: [@Oracle5163](https://discordapp.com/users/oracle5163)
+- 🗨️ Discord: `oracle5163`
 
 ## 📄 License
 
-This project is licensed under **MIT LICENSE**. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
+This project is licensed under **MIT LICENSE**. See the [LICENSE](LICENSE) file for details.

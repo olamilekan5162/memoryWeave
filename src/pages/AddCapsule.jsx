@@ -162,7 +162,7 @@ const AddCapsule = () => {
             <BsCloudUpload size={50} className="mb-2" />
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-lg font-bold">Summer Memories</h1>
-              <p className="text-sm sm:text-base px-6 sm:p-0 text-center">
+              <p className="text-sm sm:text-base px-6 sm:px-0 text-center">
                 Select and upload multiple images of your memory
               </p>
               <p className="text-sm text-text italic">
