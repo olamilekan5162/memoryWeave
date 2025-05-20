@@ -110,14 +110,14 @@ const Playback = () => {
               onClick={() => setIsModalOpen(true)}
             >
               <MdDeleteOutline />
-              <p className="hidden sm:block">Delete Memory</p>
+              <p className="hidden sm:block">Delete Weave</p>
             </div>
             <div
               className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer"
               onClick={() => exportCapsule()}
             >
               <CiExport />
-              <p className="hidden sm:block">Export Memory</p>
+              <p className="hidden sm:block">Export Weave</p>
             </div>
             <div
               className="flex flex-row gap-1 items-center hover:text-primary cursor-pointer"
@@ -133,43 +133,45 @@ const Playback = () => {
           <div className="w-full flex flex-col items-center gap-3 sm:gap-10 col-span-1 sm:col-span-4 sm:border-r-1 border-gray-300">
             {/* playback */}
             <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[90%] p-8 relative overflow-hidden">
-  {/* Blurred Background */}
-  <div
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md brightness-75 scale-110 z-0 transition-all duration-500"
-    style={{
-      backgroundImage: vibe?.media?.[currentIndex]?.type?.startsWith("video/")
-        ? `url(${vidBg})`
-        : currentMediaUrl
-        ? `url(${currentMediaUrl})`
-        : "none",
-    }}
-  />
-  
-  {/* Foreground Media */}
-  <div className="relative z-10 h-full w-full flex items-center justify-center">
-    {vibe?.media?.[currentIndex]?.file instanceof Blob ? (
-      vibe.media[currentIndex].type.startsWith("image/") ? (
-        <img
-          src={currentMediaUrl}
-          alt=""
-          className="max-h-full max-w-full object-contain transition-all duration-500 rounded-xl shadow-md"
-        />
-      ) : (
-        <video
-          src={currentMediaUrl}
-          autoPlay
-          controls
-          onEnded={() =>
-            setCurrentIndex(
-              (prevIndex) => (prevIndex + 1) % vibe.media.length
-            )
-          }
-          className="max-h-full max-w-full object-contain rounded-xl shadow-md"
-        />
-      )
-    ) : null}
-  </div>
-</div>
+              {/* Blurred Background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md brightness-75 scale-110 z-0 transition-all duration-500"
+                style={{
+                  backgroundImage: vibe?.media?.[
+                    currentIndex
+                  ]?.type?.startsWith("video/")
+                    ? `url(${vidBg})`
+                    : currentMediaUrl
+                    ? `url(${currentMediaUrl})`
+                    : "none",
+                }}
+              />
+
+              {/* Foreground Media */}
+              <div className="relative z-10 h-full w-full flex items-center justify-center">
+                {vibe?.media?.[currentIndex]?.file instanceof Blob ? (
+                  vibe.media[currentIndex].type.startsWith("image/") ? (
+                    <img
+                      src={currentMediaUrl}
+                      alt=""
+                      className="max-h-full max-w-full object-contain transition-all duration-500 rounded-xl shadow-md"
+                    />
+                  ) : (
+                    <video
+                      src={currentMediaUrl}
+                      autoPlay
+                      controls
+                      onEnded={() =>
+                        setCurrentIndex(
+                          (prevIndex) => (prevIndex + 1) % vibe.media.length
+                        )
+                      }
+                      className="max-h-full max-w-full object-contain rounded-xl shadow-md"
+                    />
+                  )
+                ) : null}
+              </div>
+            </div>
 
             {/* playback end */}
 

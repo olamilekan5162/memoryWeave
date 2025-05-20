@@ -21,22 +21,18 @@ MemoryWeave is for anyone who wants to do more with their memories than just let
 
 ## Features 🚀
 
-- **Capsule Creation:** Create "Memory Capsules" for events, trips, or any moment.
-- **Multimedia Integration:** Add photos, video clips, and detailed journal entries.
-- **Sensory Enhancement:** Select ambient background sounds to set the mood.
-- **Dynamic Playback:** Experience your memories as an auto-playing slideshow with:
-  - Smooth transitions.
-  - Integrated journaling display.
-  - Video playback with automatic ambiance volume adjustment.
-- **Local Storage:** All data saved securely in your browser's IndexedDB.
-- **Powerful Organization:**
-  - Tag capsules for easy categorization.
-  - Search by title, tags, or journal content.
-  - Filter capsule by tags and or Sort by date.
-- **Export/Import:**
-  - Export capsules as JSON files for backup or sharing.
-  - Import previously exported capsules.
-  - Export as a shareable HTML Mini-Site
+| Feature                    | Description                                                                                                    |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------- |
+| **Capsule Creation**       | Create "Memory Capsules" (or "Weaves") for events, trips, or any cherished moment.                             |
+| **Multimedia Integration** | Add photos, video clips, and detailed journal entries to your weaves.                                          |
+| **Sensory Enhancement**    | Select ambient background sounds to perfectly set the mood for your memory.                                    |
+| **Dynamic Playback**       | Experience memories as an auto-playing slideshow with smooth media transitions and integrated journaling.      |
+| **Smart Audio**            | Automatic adjustment of ambiance volume during video playback for clarity.                                     |
+| **Local Storage**          | All your data is saved securely and privately in your browser's IndexedDB.                                     |
+| **Powerful Organization**  | Tag capsules for easy categorization; search by title, tags, or content; filter and sort by date.              |
+| **Flexible Export/Import** |                                                                                                                |
+| ↳ JSON Export/Import       | Back up your weaves or share them with other MemoryWeave users.                                                |
+| ↳ HTML Mini-Site Export    | Generate a unique, self-contained HTML file of your weave that anyone can view in any browser – no app needed! |
 
 ## Tech Stack 🛠️
 
