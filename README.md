@@ -13,9 +13,8 @@
 In a world overflowing with digital photos and videos, our memories often get lost in the scroll. MemoryWeave offers a unique solution to not just store, but _re-experience_ and _share_ these precious moments in a deeply personal and engaging way.
 
 - **Craft Immersive Narratives:** Don't just show photos; tell the story. Combine your media with journaling, thematic music, and ambient sounds to reconstruct the _feeling_ of a memory.
-- **Your Personal Touch:** With features like custom visual themes (e.g., Vintage, Golden Hour), the Ken Burns effect for photos, and fine-tuned audio mixing, you are the director of your memory experience.
 - **All Your Memories, Always Yours:** MemoryWeave operates entirely in your browser. All your data is stored locally using IndexedDB, ensuring privacy and ownership. No cloud accounts, no subscriptions.
-- **Share Your Woven Memories:** Export your crafted "Vibes" as JSON files to back them up or share them with other MemoryWeave users. Or, export a fully self-contained HTML 'Mini-Site' of your Vibe that anyone can view in their browser, no app needed!
+- **Share Your Woven Memories:** Export your crafted "weaves" as JSON files to back them up or share them with other MemoryWeave users. Or, export a fully self-contained HTML 'Mini-Site' of your Weaved memory that anyone can view in their browser, no app needed!
 - **Rediscover & Relive:** Easily search, filter by tags, and sort your memory capsules. Let MemoryWeave help you stumble upon forgotten gems from your past.
 
 MemoryWeave is for anyone who wants to do more with their memories than just let them sit in a folder. It's for storytellers, nostalgists, and anyone looking to preserve and share their life's moments in a more meaningful way.
@@ -92,7 +91,7 @@ Follow these instructions to get MemoryWeave up and running on your local machin
 
 - 💻 Live Demo: [MemoryWeave Live](https://memory-weave.vercel.app/)
 
-- 📁 [GitHub Repository](https://github.com/olamilekan5162/memoryWeave)
+- 📁 Source files: Available in the [GitHub Repository](https://github.com/olamilekan5162/memoryWeave)
 
 - 🗨️ Discord: [@Oracle5163](https://discordapp.com/users/oracle5163)
 
