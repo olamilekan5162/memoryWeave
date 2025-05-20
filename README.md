@@ -12,7 +12,7 @@
 
 In a world overflowing with digital photos and videos, our memories often get lost in the scroll. MemoryWeave helps you rediscover your cherished moments. By intuitively combining your photos, videos, journal entries, and selected ambient sounds into "weaves," it offers a unique way to not just store, but _re-experience_ and _share_ these memories in a deeply personal and engaging way.
 
-- **Craft Immersive Narratives:** Don't just show photos; tell the story. Combine your media with journaling, thematic music, and ambient sounds to reconstruct the _feeling_ of a memory.
+- **Craft Immersive Narratives:** Don't just show photos; tell the story. Combine your media with journaling, and ambient sounds to reconstruct the _feeling_ of a memory.
 - **All Your Memories, Always Yours:** MemoryWeave operates entirely in your browser. All your data is stored locally using IndexedDB, ensuring privacy and ownership. No cloud accounts, no subscriptions.
 - **Share Your Woven Memories:** Export your crafted "weaves" as JSON files to back them up or share them with other MemoryWeave users. Or, export a fully self-contained HTML 'Mini-Site' of your Weaved memory that anyone can view in their browser, no app needed!
 - **Rediscover & Relive:** Easily search, filter by tags, and sort your memory capsules. Let MemoryWeave help you stumble upon forgotten gems from your past.
