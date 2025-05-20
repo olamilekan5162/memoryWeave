@@ -45,6 +45,7 @@ const MainContent = ({ openSearch, searchQuery, setSearchQuery }) => {
   const searchedVibes = filteredVibe?.filter(
     (vibe) =>
       vibe.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      vibe.journal.toLowerCase().includes(searchQuery.toLowerCase()) ||
       vibe.tags.some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase())
       )
