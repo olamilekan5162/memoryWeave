@@ -15,7 +15,7 @@ In a world overflowing with digital photos and videos, our memories often get lo
 - **Craft Immersive Narratives:** Don't just show photos; tell the story. Combine your media with journaling, and ambient sounds to reconstruct the _feeling_ of a memory.
 - **All Your Memories, Always Yours:** MemoryWeave operates entirely in your browser. All your data is stored locally using IndexedDB, ensuring privacy and ownership. No cloud accounts, no subscriptions.
 - **Share Your Woven Memories:** Export your crafted "weaves" as JSON files to back them up or share them with other MemoryWeave users. Or, export a fully self-contained HTML 'Mini-Site' of your Weaved memory that anyone can view in their browser, no app needed!
-- **Rediscover & Relive:** Easily search, filter by tags, and sort your memory capsules. Let MemoryWeave help you stumble upon forgotten gems from your past.
+- **Rediscover & Relive:** Easily search, filter by tags, and sort your memory weaved. Let MemoryWeave help you stumble upon forgotten gems from your past.
 
 MemoryWeave is for anyone who wants to do more with their memories than just let them sit in a folder. It's for storytellers, nostalgists, and anyone looking to preserve and share their life's moments in a more meaningful way.
 
@@ -29,8 +29,8 @@ MemoryWeave is for anyone who wants to do more with their memories than just let
 | **Dynamic Playback**       | Experience memories as an auto-playing slideshow with smooth media transitions and integrated journaling.      |
 | **Smart Audio**            | Automatic adjustment of ambiance volume during video playback for clarity.                                     |
 | **Local Storage**          | All your data is saved securely and privately in your browser's IndexedDB.                                     |
-| **Powerful Organization**  | Tag capsules for easy categorization; search by title, tags, or content; filter and sort by date.              |
-| **Flexible Export/Import** |                                                                                                                |
+| **Powerful Organization**  | Tag weaves for easy categorization; search by title, tags, or content; filter and sort by date.                |
+| **Flexible Export/Import** |
 | ↳ JSON Export/Import       | Back up your weaves or share them with other MemoryWeave users.                                                |
 | ↳ HTML Mini-Site Export    | Generate a unique, self-contained HTML file of your weave that anyone can view in any browser – no app needed! |
 
