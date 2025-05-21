@@ -19,7 +19,7 @@ const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
         <input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search for memories by tag, title, date ..."
+          placeholder="Search for memories by tag, title, journal content..."
           className="border-0 outline-0 w-full text-text"
         />
         <CiSearch className="text-3xl cursor-pointer" />

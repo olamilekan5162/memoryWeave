@@ -75,9 +75,7 @@ const AddCapsule = () => {
           onSubmit={handleSubmit}
           className="flex flex-col border-1 rounded-xl border-gray-300 w-[95%] md:w-[60%] p-8 gap-2"
         >
-          <h1 className="text-2xl font-bold text-center">
-            CREATE NEW SUMMER VIBE
-          </h1>
+          <h1 className="text-2xl font-bold text-center">CREATE NEW WEAVE</h1>
           <label for="title" className="text-xl text-text">
             Title:
           </label>
