@@ -135,7 +135,7 @@ const Playback = () => {
             <div className="border-1 rounded-xl border-gray-300 h-[300px] sm:h-[500px] w-[95%] sm:w-[90%] p-8 relative overflow-hidden">
               {/* Blurred Background */}
               <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md brightness-75 scale-110 z-0 transition-all duration-500"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md brightness-75 scale-110 z-1 transition-all duration-500"
                 style={{
                   backgroundImage: vibe?.media?.[
                     currentIndex
@@ -239,7 +239,7 @@ const Playback = () => {
                 )}
 
                 {vibe.journal && (
-                  <p className="text-sm leading-relaxed text-text whitespace-pre-wrap max-h-[400px] sm:max-h-fit sm:h-fit overflow-y-auto">
+                  <p className="text-sm leading-relaxed text-text whitespace-pre-wrap max-h-[200px] sm:max-h-fit sm:h-fit overflow-y-auto">
                     {vibe.journal}
                   </p>
                 )}
