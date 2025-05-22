@@ -6,9 +6,10 @@
 
 **Weave together your photos, videos, journal entries, music, and ambiance to craft rich, immersive experiences from your most cherished memories.** MemoryWeave empowers you to go beyond static galleries and transform your digital keepsakes into dynamic, shareable narratives.
 
-**[Link to Your Demo Video Here]**
+##Demo Video
+[MemoryWeave Demo](https://drive.google.com/file/d/1Y9y9etd_WE10kuLt4dnA1VYFyGoTLJ7e/view?usp=sharing)
 
-## Why MemoryWeave? 🤔
+## Why MemoryWeave?
 
 In a world overflowing with digital photos and videos, our memories often get lost in the scroll. MemoryWeave offers a unique solution to not just store, but _re-experience_ and _share_ these precious moments in a deeply personal and engaging way.
 
