@@ -6,7 +6,7 @@ import weave from "../assets/weave.png";
 const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
   const navigate = useNavigate();
   return (
-    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md z-1">
+    <nav className="w-full h-[120px] flex flex-row items-center justify-around border-b-1 border-gray-300 fixed top-0 left-0 backdrop-blur-md z-50">
       <Link className="flex flex-row items-center gap-2" to={"/"}>
         <img src={weave} alt="" className="w-[50px] h-auto" />
         <h1 className="text-2xl font-bold text-primary">
@@ -19,7 +19,7 @@ const Header = ({ openSearch, setOpenSearch, searchQuery, setSearchQuery }) => {
         <input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search for memories by tag, title, date ..."
+          placeholder="Search for memories by tag, title, journal content..."
           className="border-0 outline-0 w-full text-text"
         />
         <CiSearch className="text-3xl cursor-pointer" />

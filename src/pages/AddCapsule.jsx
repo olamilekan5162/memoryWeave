@@ -22,6 +22,7 @@ const AddCapsule = () => {
     journal: "",
   });
   const [tag, setTag] = useState(userVibe.tags.join(", "));
+  const [selectedMedia, setSelectedMedia] = useState([]);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -34,6 +35,7 @@ const AddCapsule = () => {
 
   const handleMediaChange = (e) => {
     const files = Array.from(e.target.files);
+    setSelectedMedia(files);
     const media = files.map((file) => ({
       id: uuidv4(),
       file: file,
@@ -73,9 +75,7 @@ const AddCapsule = () => {
           onSubmit={handleSubmit}
           className="flex flex-col border-1 rounded-xl border-gray-300 w-[95%] md:w-[60%] p-8 gap-2"
         >
-          <h1 className="text-2xl font-bold text-center">
-            CREATE NEW SUMMER VIBE
-          </h1>
+          <h1 className="text-2xl font-bold text-center">CREATE NEW WEAVE</h1>
           <label for="title" className="text-xl text-text">
             Title:
           </label>
@@ -157,13 +157,19 @@ const AddCapsule = () => {
             htmlFor="media"
             className="flex flex-col sm:flex-row items-center w-[100%] mx-auto justify-center cursor-pointer border-1 border-gray-300 py-6 rounded gap-2 sm:gap-12 mt-1"
           >
-            <BsCloudUpload size={50} className="mb-4" />
-            <p className="text-sm p-6 sm:hidden">
-              Select and upload multiple images of your memory
-            </p>
-            <div className="hidden sm:flex flex-col items-center justify-center">
+            <BsCloudUpload size={50} className="mb-2" />
+            <div className="flex flex-col items-center justify-center">
               <h1 className="text-lg font-bold">Summer Memories</h1>
-              <p>Select and upload multiple images of your memory</p>
+              <p className="text-sm sm:text-base px-6 sm:px-0 text-center">
+                Select and upload multiple images of your memory
+              </p>
+              <p className="text-sm text-text italic">
+                {selectedMedia.length === 0
+                  ? "No files selected yet"
+                  : `${selectedMedia.length} file${
+                      selectedMedia.length > 1 ? "s" : ""
+                    } selected`}
+              </p>
             </div>
             <input
               className="hidden"

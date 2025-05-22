@@ -45,6 +45,7 @@ const MainContent = ({ openSearch, searchQuery, setSearchQuery }) => {
   const searchedVibes = filteredVibe?.filter(
     (vibe) =>
       vibe.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      vibe.journal.toLowerCase().includes(searchQuery.toLowerCase()) ||
       vibe.tags.some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase())
       )
@@ -63,7 +64,7 @@ const MainContent = ({ openSearch, searchQuery, setSearchQuery }) => {
     <>
       <main className="flex flex-col gap-5 px-4 md:px-[250px] text-text">
         <div className="flex flex-row items-center justify-between text-text">
-          <h1 className="font-bold text-2xl">Memory Capsule</h1>
+          <h1 className="font-bold text-2xl">Memory Weaved</h1>
           <div
             className="flex flex-row items-center hover:text-primary cursor-pointer"
             onClick={() => fileInputRef.current.click()}
